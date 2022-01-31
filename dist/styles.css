@@ -32,4 +32,19 @@
   margin: 0.2rem 0.4rem;
 }
 
+.sheet.tylestel > section > form {
+  display: flex;
+  flex-direction: column;
+}
+.sheet.tylestel .editor {
+  height: 95%;
+}
+.sheet.tylestel .sheet-body {
+  flex: 1 1 100%;
+  display: flex;
+}
+.sheet.tylestel .sheet-body > * {
+  flex: 1 1 100%;
+}
+
 /*# sourceMappingURL=styles.css.map */

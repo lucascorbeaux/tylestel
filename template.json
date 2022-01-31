@@ -54,18 +54,24 @@
         "templates": []
       }
     },
-    "Items": {
-      "types": ["actions", "reactions"],
+    "Item": {
+      "types": ["actions", "reactions", "pouvoir"],
       "templates": {
+          "base": {
+            "description": ""
+          },
           "manoeuvres": {
             "nbUtilisationsMax": 0,
             "nbUtilisationsActuel": 0,
             "attribut": "",
             "metier": "",
             "pre-requis": "",
-            "effet": "",
-            "description": ""
+            "effet": ""
           }
+      },
+      "pouvoir": {
+        "templates": ["base"],
+        "dieu": ""
       },
       "actions": {
         "templates": [ "manoeuvres" ]

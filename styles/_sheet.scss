@@ -1,0 +1,19 @@
+.sheet.tylestel {
+  & > section > form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .editor {
+    height: 95%;
+  }
+
+  .sheet-body {
+    flex: 1 1 100%;
+    display: flex;
+  }
+
+  .sheet-body > * {
+    flex: 1 1 100%;
+  }
+}
