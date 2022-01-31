@@ -1,0 +1,5 @@
+<ul class="metiers">
+    {{#each data.data.dieux as |dieu id|}}
+    {{> 'systems/tylestel/templates/part/dieu-value.html' dieu=dieu id=id }}
+    {{/each}}
+</ul>

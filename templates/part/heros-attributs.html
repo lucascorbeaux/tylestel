@@ -1,0 +1,5 @@
+<ul class="attributs">
+    {{#each data.data.attributs as |attribut id|}}
+        {{> 'systems/tylestel/templates/part/attribut-value.html' attribut=attribut id=id }}
+    {{/each}}
+</ul>

@@ -1,0 +1,15 @@
+{
+  "name": "tylestel",
+  "version": "1.0.0",
+  "description": "Non-official foundry module for Tylestel RPG (by La plume de Cyrano).",
+  "main": "index.js",
+  "scripts": {
+    "build": "sass styles/main.scss dist/styles.css",
+    "build:watch": "sass --watch styles/main.scss dist/styles.css"
+  },
+  "author": "ZUBER Lionel",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.49.0"
+  }
+}

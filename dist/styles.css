@@ -1,0 +1,35 @@
+.sheet.tylestel.actor ul + ul {
+  margin-top: 1rem;
+}
+.sheet.tylestel.actor ul.attributs, .sheet.tylestel.actor ul.metiers, .sheet.tylestel.actor ul.divinites {
+  display: flex;
+  margin: 0.4rem 0rem;
+  padding: 0;
+  justify-content: flex-start;
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+.sheet.tylestel.actor ul.attributs li, .sheet.tylestel.actor ul.metiers li, .sheet.tylestel.actor ul.divinites li {
+  width: 12rem;
+  display: flex;
+  justify-content: space-between;
+}
+.sheet.tylestel.actor ul.attributs label, .sheet.tylestel.actor ul.metiers label, .sheet.tylestel.actor ul.divinites label {
+  text-transform: capitalize;
+}
+.sheet.tylestel.actor ul.attributs input, .sheet.tylestel.actor ul.metiers input, .sheet.tylestel.actor ul.divinites input {
+  width: 3rem;
+}
+.sheet.tylestel.actor ul.attributs {
+  justify-content: center;
+}
+.sheet.tylestel.actor ul.attributs li {
+  width: 8rem;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+.sheet.tylestel.actor ul.metiers li, .sheet.tylestel.actor ul.divinites li {
+  margin: 0.2rem 0.4rem;
+}
+
+/*# sourceMappingURL=styles.css.map */
