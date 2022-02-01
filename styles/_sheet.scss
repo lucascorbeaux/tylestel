@@ -1,4 +1,8 @@
 .sheet.tylestel {
+  .window-content {
+    background: white;
+  }
+  
   & > section > form {
     display: flex;
     flex-direction: column;
@@ -6,14 +10,40 @@
 
   .editor {
     height: 95%;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    margin: 0.6rem 0.2rem;
+  }
+
+  .sheet-header {
+    border-bottom: 1px solid rgba(0.25,0.25,0.25,0.25);
+    margin-bottom: 0.3rem;
   }
 
   .sheet-body {
     flex: 1 1 100%;
     display: flex;
   }
+ 
+  input[type=number] {
+    max-width: 3em;
+  }
 
-  .sheet-body > * {
-    flex: 1 1 100%;
+  select {
+    max-width: 10em;
+    height: 26px;
+  }
+
+  .form-group {
+    display: flex;
+    align-items: center;
+  }
+
+  .cols {
+    display: flex;
+    gap: 2em;
+
+    & > * {
+      flex: 1;
+    }
   }
 }

@@ -1,7 +1,12 @@
+.sheet.tylestel.actor .sheet-body {
+  flex-direction: column;
+}
 .sheet.tylestel.actor ul + ul {
   margin-top: 1rem;
 }
-.sheet.tylestel.actor ul.attributs, .sheet.tylestel.actor ul.metiers, .sheet.tylestel.actor ul.divinites {
+.sheet.tylestel.actor ul.attributs,
+.sheet.tylestel.actor ul.metiers,
+.sheet.tylestel.actor ul.divinites {
   display: flex;
   margin: 0.4rem 0rem;
   padding: 0;
@@ -9,15 +14,21 @@
   max-width: 100%;
   flex-wrap: wrap;
 }
-.sheet.tylestel.actor ul.attributs li, .sheet.tylestel.actor ul.metiers li, .sheet.tylestel.actor ul.divinites li {
+.sheet.tylestel.actor ul.attributs li,
+.sheet.tylestel.actor ul.metiers li,
+.sheet.tylestel.actor ul.divinites li {
   width: 12rem;
   display: flex;
   justify-content: space-between;
 }
-.sheet.tylestel.actor ul.attributs label, .sheet.tylestel.actor ul.metiers label, .sheet.tylestel.actor ul.divinites label {
+.sheet.tylestel.actor ul.attributs label,
+.sheet.tylestel.actor ul.metiers label,
+.sheet.tylestel.actor ul.divinites label {
   text-transform: capitalize;
 }
-.sheet.tylestel.actor ul.attributs input, .sheet.tylestel.actor ul.metiers input, .sheet.tylestel.actor ul.divinites input {
+.sheet.tylestel.actor ul.attributs input,
+.sheet.tylestel.actor ul.metiers input,
+.sheet.tylestel.actor ul.divinites input {
   width: 3rem;
 }
 .sheet.tylestel.actor ul.attributs {
@@ -28,22 +39,60 @@
   flex-direction: column-reverse;
   align-items: center;
 }
-.sheet.tylestel.actor ul.metiers li, .sheet.tylestel.actor ul.divinites li {
+.sheet.tylestel.actor ul.metiers li,
+.sheet.tylestel.actor ul.divinites li {
   margin: 0.2rem 0.4rem;
 }
 
+.sheet.tylestel .window-content {
+  background: white;
+}
 .sheet.tylestel > section > form {
   display: flex;
   flex-direction: column;
 }
 .sheet.tylestel .editor {
   height: 95%;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  margin: 0.6rem 0.2rem;
+}
+.sheet.tylestel .sheet-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  margin-bottom: 0.3rem;
 }
 .sheet.tylestel .sheet-body {
   flex: 1 1 100%;
   display: flex;
 }
-.sheet.tylestel .sheet-body > * {
+.sheet.tylestel input[type=number] {
+  max-width: 3em;
+}
+.sheet.tylestel select {
+  max-width: 10em;
+  height: 26px;
+}
+.sheet.tylestel .form-group {
+  display: flex;
+  align-items: center;
+}
+.sheet.tylestel .cols {
+  display: flex;
+  gap: 2em;
+}
+.sheet.tylestel .cols > * {
+  flex: 1;
+}
+
+.tylestel.sheet.manoeuvre .item-subtitle, .tylestel.sheet.pouvoir .item-subtitle {
+  text-transform: capitalize;
+  color: #5D5D5D;
+  margin-left: 0.5rem;
+  margin-top: -0.4rem;
+}
+.tylestel.sheet.manoeuvre .sheet-body, .tylestel.sheet.pouvoir .sheet-body {
+  flex-direction: column;
+}
+.tylestel.sheet.manoeuvre .sheet-body .editor, .tylestel.sheet.pouvoir .sheet-body .editor {
   flex: 1 1 100%;
 }
 

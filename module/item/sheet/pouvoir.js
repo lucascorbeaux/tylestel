@@ -4,8 +4,8 @@ export default class PouvoirSheet extends ItemSheet {
     return mergeObject(super.defaultOptions, {
       classes: ["sheet", "item", "tylestel", "pouvoir"],
       template: "systems/tylestel/templates/sheet/pouvoir.html",
-      width: 730,
-      height: 750
+      width: 500,
+      height: 400,
     });
   }
 

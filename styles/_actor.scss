@@ -1,45 +1,51 @@
 .sheet.tylestel.actor {
+  .sheet-body {
+    flex-direction: column;
+  }
 
-    ul + ul {
-        margin-top: 1rem;
+  ul + ul {
+    margin-top: 1rem;
+  }
+
+  ul.attributs,
+  ul.metiers,
+  ul.divinites {
+    display: flex;
+    margin: 0.4rem 0rem;
+    padding: 0;
+    justify-content: flex-start;
+    max-width: 100%;
+    flex-wrap: wrap;
+
+    li {
+      width: 12rem;
+      display: flex;
+      justify-content: space-between;
     }
 
-    ul.attributs, ul.metiers, ul.divinites {
-        display: flex;
-        margin: 0.4rem 0rem;
-        padding: 0;
-        justify-content: flex-start;
-        max-width: 100%;
-        flex-wrap: wrap;
-        
-        li {
-            width: 12rem;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        label {
-            text-transform: capitalize;
-        }
-
-        input {
-            width: 3rem;
-        }
+    label {
+      text-transform: capitalize;
     }
 
-    ul.attributs {
-        justify-content: center;
-
-        li {
-            width: 8rem;
-            flex-direction: column-reverse;
-            align-items: center;
-        }
+    input {
+      width: 3rem;
     }
+  }
 
-    ul.metiers, ul.divinites {
-        li {
-            margin: 0.2rem 0.4rem;
-        }
+  ul.attributs {
+    justify-content: center;
+
+    li {
+      width: 8rem;
+      flex-direction: column-reverse;
+      align-items: center;
     }
+  }
+
+  ul.metiers,
+  ul.divinites {
+    li {
+      margin: 0.2rem 0.4rem;
+    }
+  }
 }

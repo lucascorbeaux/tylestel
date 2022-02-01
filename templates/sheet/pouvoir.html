@@ -10,6 +10,16 @@
 
     {{!-- Sheet Body --}}
     <section class="sheet-body">
+        <div class="form-group">
+            <label for="data.dieu">Dieu</label>
+            <input
+                name="data.dieu"
+                id="data.dieu"
+                type="text"
+                value="{{data.data.dieu}}"
+                data-dtype="String"
+            />
+        </div>
         {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable}}
     </section>
 </form>

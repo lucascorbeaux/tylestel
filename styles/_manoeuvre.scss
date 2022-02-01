@@ -1,0 +1,15 @@
+.tylestel.sheet.manoeuvre, .tylestel.sheet.pouvoir {
+    .item-subtitle {
+        text-transform: capitalize;
+        color: #5D5D5D;
+        margin-left: 0.5rem;
+        margin-top: -0.4rem;
+    }
+    .sheet-body {
+        flex-direction: column;
+        
+        .editor {
+            flex: 1 1 100%;
+        }
+    }
+}

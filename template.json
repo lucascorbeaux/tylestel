@@ -1,83 +1,89 @@
 {
-    "Actor": {
-      "types": ["heros", "monstres"],
-      "templates": {
-        "attributsTemplate": {
-          "attributs": {
-            "force": 0,
-            "agilité": 0,
-            "endurance": 0,
-            "volonté": 0,
-            "perception": 0,
-            "charisme": 0
-          }
-        },
-        "metiersTemplate": {
-          "metiers": {
-            "artisan": 0,
-            "artiste": 0,
-            "athlète": 0,
-            "balistikos": 0,
-            "dresseur": 0,
-            "flux": 0,
-            "kardia de la terre": 0,
-            "kardia du feu": 0,
-            "kardia de l'eau": 0,
-            "kardia du vent": 0,
-            "guerrier": 0,
-            "kleptos": 0,
-            "marin": 0,
-            "pharmaka": 0,
-            "prêtre": 0,
-            "rhéteur": 0,
-            "savant": 0,
-            "stratégos": 0,
-            "survie": 0
-          }
-        },
-        "divinitesTemplates": {
-          "dieux": {
-            "av": 0,
-            "blis": 0,
-            "bromos": 0,
-            "irs": 0,
-            "nerven": 0,
-            "our": 0,
-            "pso": 0
-          }
+  "Actor": {
+    "types": ["heros", "monstres"],
+    "templates": {
+      "attributsTemplate": {
+        "attributs": {
+          "force": 0,
+          "agilité": 0,
+          "endurance": 0,
+          "volonté": 0,
+          "perception": 0,
+          "charisme": 0
         }
       },
-      "heros": {
-        "templates": ["attributsTemplate", "metiersTemplate", "divinitesTemplates"]
+      "metiersTemplate": {
+        "metiers": {
+          "artisan": 0,
+          "artiste": 0,
+          "athlète": 0,
+          "balistikos": 0,
+          "dresseur": 0,
+          "flux": 0,
+          "kardia de la terre": 0,
+          "kardia du feu": 0,
+          "kardia de l'eau": 0,
+          "kardia du vent": 0,
+          "guerrier": 0,
+          "kleptos": 0,
+          "marin": 0,
+          "pharmaka": 0,
+          "prêtre": 0,
+          "rhéteur": 0,
+          "savant": 0,
+          "stratégos": 0,
+          "survie": 0
+        }
       },
-      "monstres": {
-        "templates": []
+      "divinitesTemplates": {
+        "dieux": {
+          "av": 0,
+          "blis": 0,
+          "bromos": 0,
+          "irs": 0,
+          "nerven": 0,
+          "our": 0,
+          "pso": 0
+        }
       }
     },
-    "Item": {
-      "types": ["actions", "reactions", "pouvoir"],
-      "templates": {
-          "base": {
-            "description": ""
-          },
-          "manoeuvres": {
-            "nbUtilisationsMax": 0,
-            "nbUtilisationsActuel": 0,
-            "attribut": "",
-            "metier": "",
-            "pre-requis": "",
-            "effet": ""
-          }
-      },
-      "pouvoir": {
-        "templates": ["base"],
-        "dieu": ""
-      },
-      "actions": {
-        "templates": [ "manoeuvres" ]
-      },
-      "reactions": {
-        "templates": [ "manoeuvres" ]
-      }
+    "heros": {
+      "templates": [
+        "attributsTemplate",
+        "metiersTemplate",
+        "divinitesTemplates"
+      ]
+    },
+    "monstres": {
+      "templates": []
     }
+  },
+  "Item": {
+    "types": ["actions", "reactions", "pouvoir"],
+    "templates": {
+      "base": {
+        "description": ""
+      },
+      "manoeuvres": {
+        "nbUtilisationsMax": 0,
+        "nbUtilisationsActuel": 0,
+        "attribut": "",
+        "metier": "",
+        "preRequis": {
+          "metier": "",
+          "value": 0
+        }
+      }
+    },
+    "pouvoir": {
+      "templates": ["base"],
+      "dieu": ""
+    },
+    "actions": {
+      "templates": ["base", "manoeuvres"]
+    },
+    "reactions": {
+      "templates": ["base", "manoeuvres"]
+    }
+  }
 }

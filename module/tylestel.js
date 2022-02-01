@@ -3,6 +3,7 @@ import ItemTylestel from "./item/item.js";
 import HeroSheet from "./actor/sheet/hero.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
 import PouvoirSheet from "./item/sheet/pouvoir.js";
+import ManoeuvreSheet from "./item/sheet/manoeuvre.js";
 
 Hooks.once("init", function () {
   console.log(`Tylestel | Initializing Tylestel System`);
@@ -22,9 +23,14 @@ Hooks.once("init", function () {
 
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("tylestel", PouvoirSheet, {
-    types: ["pouvoir", "actions", "reactions"],
+    types: ["pouvoir"],
     makeDefault: true,
   });
+  Items.registerSheet("tylestel", ManoeuvreSheet, {
+    types: ["actions", "reactions"],
+    makeDefault: true,
+  });
+
 
   return preloadHandlebarsTemplates();
 });

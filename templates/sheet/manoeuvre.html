@@ -1,0 +1,44 @@
+<form
+    class="{{cssClass}}"
+    autocomplete="off"
+>
+
+    {{!-- Sheet Header --}}
+    <header class="sheet-header">
+        {{> 'systems/tylestel/templates/part/item-headers.html' }}
+    </header>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        <div class="form-group">
+            <label>
+                Nb utilisations
+            </label>
+            <input
+                type="number"
+                name="data.nbUtilisationsMax"
+                value="{{ data.data.nbUtilisationsMax }}"
+            />
+        </div>
+        <section class="cols">
+            <div class="form-group">
+                <label>
+                    Tests
+                </label>
+                {{> 'systems/tylestel/templates/part/select-attribut.html' value=data.data.attribut options=attributs }}
+                {{> 'systems/tylestel/templates/part/select-metier.html' field="data.metier" value=data.data.metier options=metiers
+                }}
+            </div>
+            <div class="form-group">
+                <label>Pré-requis</label>
+                {{> 'systems/tylestel/templates/part/select-metier.html' field="data.preRequis.metier" value=data.data.preRequis.metier options=metiers }}
+                <input
+                    type="number"
+                    name="data.preRequis.value"
+                    value="{{ data.data.preRequis.value }}"
+                />
+            </div>
+        </section>
+        {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable}}
+    </section>
+</form>
