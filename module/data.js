@@ -25,5 +25,27 @@ export const attributs = {
     charisme: "Charisme"
 };
 
-
+export const dieux = {
+  av: {
+    description: "Nature, Guérison",
+  },
+  blis: {
+    description: "Sagesse, Ruse, Armes",
+  },
+  bromos: {
+    description: "Mer, Changement",
+  },
+  irs: {
+    description: "Conflit, Courage",
+  },
+  nerven: {
+    description: "Justice, Vérité",
+  },
+  our: {
+    description: "Commerce, Construction",
+  },
+  pso: {
+    description: "Civilisation, Amour, Art",
+  }
+};
 

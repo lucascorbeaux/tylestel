@@ -18,7 +18,6 @@
     flex-wrap: wrap;
 
     li {
-      width: 12rem;
       display: flex;
       justify-content: space-between;
     }
@@ -27,18 +26,39 @@
       text-transform: capitalize;
     }
 
+
     input {
-      width: 3rem;
+      border: 0px;
+      text-align: center;
+      background-color: transparent;
+      max-width: 100%;
     }
   }
 
   ul.attributs {
     justify-content: center;
+    align-items: center;
 
     li {
       width: 8rem;
       flex-direction: column-reverse;
       align-items: center;
+    }
+
+    .attribut-container  {
+      height: 7em;
+      width: 7em;
+      display: flex;
+      background: no-repeat center/cover url('/systems/tylestel/assets/fdp/attribut.png');
+      justify-content: center;
+      align-items: center;
+
+      input {
+        border: 0px;
+        text-align: center;
+        background-color: transparent;
+        max-width: 100%;
+      }
     }
   }
 
@@ -46,6 +66,55 @@
   ul.divinites {
     li {
       margin: 0.2rem 0.4rem;
+    }
+  }
+
+  ul.divinites {
+    flex-direction: column;
+    max-width: 25em;
+
+    li {
+      flex-direction: row-reverse;
+      align-items: center;
+      gap: 0.2rem 1rem;
+    }
+
+    .dieu-container  {
+      height: 3em;
+      width: 3.8em;
+      display: flex;
+      background: no-repeat center/cover url('/systems/tylestel/assets/fdp/dieu.png');
+      justify-content: center;
+      align-items: center;
+    }
+
+    .dieu-header {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 100%;
+
+      .subtitle {
+        color: #5D5D5D;
+      }
+    }
+  }
+
+  ul.metiers {
+    flex-direction: column;
+    align-items: center;
+    max-height: 12rem;
+
+    li {
+      width: 12rem;
+    }
+
+    .metier-container  {
+      height: 1.5em;
+      width: 3em;
+      display: flex;
+      background: no-repeat center/cover url('/systems/tylestel/assets/fdp/metier.png');
+      justify-content: center;
+      align-items: center;
     }
   }
 }

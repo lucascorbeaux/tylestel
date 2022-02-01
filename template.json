@@ -65,6 +65,7 @@
         "description": ""
       },
       "manoeuvres": {
+        "actif": true,
         "nbUtilisationsMax": 0,
         "nbUtilisationsActuel": 0,
         "attribut": "",

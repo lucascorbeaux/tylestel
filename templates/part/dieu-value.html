@@ -1,10 +1,17 @@
 <li class="dieu">
-    <label>
-        {{ id }}
-    </label>
-    <input
-        type="number"
-        name="data.dieux.{{id}}"
-        value="{{dieu}}"
-    />
+    <div class="dieu-header">
+        <label>
+            {{ id }}
+        </label>
+        <span class="subtitle">
+            {{detail.description}}
+        </span>
+    </div>
+    <div class="dieu-container">
+        <input
+            type="number"
+            name="data.dieux.{{id}}"
+            value="{{dieu}}"
+        />
+    </div>
 </li>
