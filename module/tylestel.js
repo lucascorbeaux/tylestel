@@ -4,6 +4,7 @@ import HeroSheet from "./actor/sheet/hero.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
 import PouvoirSheet from "./item/sheet/pouvoir.js";
 import ManoeuvreSheet from "./item/sheet/manoeuvre.js";
+import { declareComponent } from "../components/index.js";
 
 Hooks.once("init", function () {
   console.log(`Tylestel | Initializing Tylestel System`);
@@ -32,5 +33,6 @@ Hooks.once("init", function () {
   });
 
 
+  declareComponent();
   return preloadHandlebarsTemplates();
 });
