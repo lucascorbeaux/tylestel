@@ -7,6 +7,8 @@ export const preloadHandlebarsTemplates = async function () {
   const basePath = "systems/tylestel/templates";
   // Define template paths to load
   const templates = [
+    "part/heros-tab-main.html",
+    "part/heros-tab-combat.html",
     "part/heros-headers.html",
     "part/heros-attributs.html",
     "part/heros-metiers.html",
@@ -16,7 +18,7 @@ export const preloadHandlebarsTemplates = async function () {
     "part/dieu-value.html",
     "part/item-headers.html",
     "part/select-attribut.html",
-    "part/select-metier.html"
+    "part/select-metier.html",
   ];
 
   const templatesPath = templates.map((t) => `${basePath}/${t}`);

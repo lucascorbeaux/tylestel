@@ -7,16 +7,41 @@
         {{> 'systems/tylestel/templates/part/heros-headers.html' }}
     </header>
 
+    {{!-- Sheet Tab Navigation --}}
+    <nav
+        class="sheet-tabs tabs"
+        data-group="primary"
+    >
+        <a
+            class="item"
+            data-tab="main"
+        >
+            <h2>Attributs et compétences</h2>
+        </a>
+        <a
+            class="item"
+            data-tab="combat"
+        >
+            <h2>Combats</h2>
+        </a>
+    </nav>
+
 
     {{!-- Sheet Body --}}
     <section class="sheet-body">
-        {{> 'systems/tylestel/templates/part/heros-attributs.html' }}
-        {{> 'systems/tylestel/templates/part/heros-metiers.html' }}
-        <div class="cols">
-            {{> 'systems/tylestel/templates/part/heros-divinites.html' }}
-            <div>
-                <compteur-vie max="20" current="19"/>
-            </div>
+        <div
+            class="tab"
+            data-group="primary"
+            data-tab="main"
+        >
+            {{> 'systems/tylestel/templates/part/heros-tab-main.html' }}
+        </div>
+        <div
+            class="tab"
+            data-group="primary"
+            data-tab="combat"
+        >
+            {{> 'systems/tylestel/templates/part/heros-tab-combat.html' }}
         </div>
     </section>
 </form>

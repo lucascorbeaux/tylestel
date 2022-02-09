@@ -62,7 +62,7 @@
 }
 .sheet.tylestel.actor ul.divinites {
   flex-direction: column;
-  max-width: 25em;
+  max-width: 18em;
 }
 .sheet.tylestel.actor ul.divinites li {
   flex-direction: row-reverse;
@@ -139,6 +139,9 @@
 }
 .sheet.tylestel .cols > * {
   flex: 1;
+}
+.sheet.tylestel .cols > .col-2 {
+  flex: 2;
 }
 
 .tylestel.sheet.manoeuvre .item-subtitle, .tylestel.sheet.pouvoir .item-subtitle {
