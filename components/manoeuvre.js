@@ -84,9 +84,11 @@ export class Manoeuvre extends LitElement {
     return this.visibleData.filter((d) => d.use);
   }
 
-  get usingManoeuvreEpuise() {
+  get usingManoeuvreNonEpuise() {
     return this.usingManoeuvre.filter(
-      (m) => m.data.nbUtilisationsMax - m.data.nbUtilisationsActuel > 0
+      (m) =>
+        m.data.nbUtilisationsMax - m.data.nbUtilisationsActuel > 0 ||
+        m.data.nbUtilisationsMax == -1
     );
   }
 
@@ -191,26 +193,20 @@ export class Manoeuvre extends LitElement {
     manoeuvre.data.actif = !manoeuvre.data.actif;
   }
 
-  actionLaunch() {
+  async actionLaunch() {
     const manoeuvre = this.usingManoeuvre;
-    if (!this.canExecute()) {
-      ui.notifications.error(
-        `Toutes les manoeuvres selectionnées doivent avoir le même test.`
-      );
-      return;
-    }
 
-    if (this.usingManoeuvre.length != manoeuvre.length) {
+    if (this.usingManoeuvreNonEpuise.length != manoeuvre.length) {
       ui.notifications.error(`Une manoeuvre choisie est épuisée.`);
       return;
     }
 
-    executeManoeuvres(this.actorId, this.usingManoeuvre);
+    await executeManoeuvres(this.actorId, this.usingManoeuvre);
   }
 
   recuperer() {
     const manoeuvre = this.usingManoeuvre;
-    if (this.usingManoeuvreEpuise.length) {
+    if (this.usingManoeuvreNonEpuise.length) {
       ui.notifications.error(
         "Les manoeuvres doivent avoir été entièrement utilisé"
       );
@@ -225,14 +221,6 @@ export class Manoeuvre extends LitElement {
         data: { nbUtilisationsActuel: manoeuvre.data.nbUtilisationsMax },
       });
     });
-  }
-
-  canExecute() {
-    if (!this.usingManoeuvre.length) return false;
-    const test = new Set(
-      this.usingManoeuvre.map((m) => m.data.attribut + m.data.metier)
-    );
-    return test.size === 1;
   }
 
   deleteItem(event) {

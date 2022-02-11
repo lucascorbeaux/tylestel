@@ -1,0 +1,16 @@
+<form onsubmit="return false;" class="form-choix-attribut">
+    <div class="form-group">
+        <label for="choix">
+            {{ fieldName }} :
+        </label>
+        <select
+            name="choix"
+            id="roll-attribut"
+        >
+            {{#each possible as |attribut|}}
+            {{ id }}
+            <option value="{{attribut}}">{{ attribut }}</option>
+            {{/each}}
+        </select>
+    </div>
+</form>

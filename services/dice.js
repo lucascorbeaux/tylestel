@@ -1,5 +1,53 @@
-export function executeManoeuvres(actorId, manoeuvres) {
+const magies = [
+  "kardia de la terre",
+  "kardia du feu",
+  "kardia de l'eau",
+  "kardian de la terre",
+];
+
+const attributs = [
+  "force",
+  "agilité",
+  "endurance",
+  "volonté",
+  "perception",
+  "charisme"
+];
+
+const metiers = [
+  "artisan",
+  "artiste",
+  "athlète",
+  "balistikos",
+  "dresseur",
+  "flux",
+  "kardia de la terre",
+  "kardia du feu",
+  "kardia de l'eau",
+  "kardia du vent",
+  "guerrier",
+  "kleptos",
+  "marin",
+  "pharmaka",
+  "prêtre",
+  "rhéteur",
+  "savant",
+  "stratégos",
+  "survie"
+];
+
+
+export async function executeManoeuvres(actorId, manoeuvres) {
   const actor = game.actors.get(actorId);
+
+  const attribut = await determinerAttribut(manoeuvres);
+  const metier = await determinerMetier(manoeuvres);
+
+  if(!attribut || !metier) {
+    ui.notifications.error(`Les manoeuvres sont incompatibles.`);
+    return;
+  }
+
   manoeuvres.forEach((manoeuvre) => {
     const name = manoeuvre.name;
     const description = manoeuvre.data.description;
@@ -13,14 +61,15 @@ export function executeManoeuvres(actorId, manoeuvres) {
       {}
     );
 
-    const item = actor.items.get(manoeuvre._id);
-    item.update({
-      data: { nbUtilisationsActuel: manoeuvre.data.nbUtilisationsActuel + 1 },
-    });
+    if(manoeuvre.data.nbUtilisationsMax != -1) {
+      const item = actor.items.get(manoeuvre._id);
+      item.update({
+        data: { nbUtilisationsActuel: manoeuvre.data.nbUtilisationsActuel + 1 },
+      });
+    }
   });
 
-  const firstManoeuvre = manoeuvres[0];
-  launchDice(actorId, firstManoeuvre.data.attribut, firstManoeuvre.data.metier);
+  launchDice(actorId, attribut, metier);
 }
 
 export function launchDice(actorId, attribut, metier) {
@@ -35,5 +84,97 @@ export function launchDice(actorId, attribut, metier) {
   roll.roll().toMessage({
       speaker: ChatMessage.getSpeaker({ actor }),
       flavor: `Attribut + Metier`,
+  });
+}
+
+
+export async function determinerAttribut(manoeuvres) {
+  const attributsPossibleParManoeuvre = manoeuvres.map((m) => m.data.attribut === 'Variable' ? attributs : m.data.attribut.split("/"));
+  const attributsPossible = attributsPossibleParManoeuvre.reduce(
+    (prev, current) => {
+      if (prev === null) {
+        return current;
+      }
+
+      return intersect(prev, current);
+    },
+    null
+  );
+
+  if(!attributsPossible.length) {
+    return null;
+  }
+
+  if(attributsPossible.length === 1) {
+    return attributsPossible[0];
+  }
+
+  // Modale pour demander l'attributs
+  return openDialogChoix('Choix de l\'attribut', {possible: attributsPossible, fieldName: 'Attribut'});
+}
+
+export async function determinerMetier(manoeuvres) {
+  const metiersPossibleParManoeuvre = manoeuvres.map(
+    (m) => (m.data.metier === "Variable" ? metiers : m.data.metier.split("/"))
+  );
+  const metiersPossibles = metiersPossibleParManoeuvre.reduce(
+    (prev, current) => {
+      if (prev === null) {
+        return current;
+      }
+
+      return intersect(prev, current);
+    },
+    null
+  );
+
+  if (!metiersPossibles.length) {
+    return null;
+  }
+
+  let metier = metiersPossibles[0];
+
+  if (metiersPossibles.length > 1) {
+    metier = await openDialogChoix("Choix du metier", {
+      possible: metiers,
+      fieldName: "Magie",
+    });
+  }
+
+  if (metier === "kardia") {
+    return openDialogChoix("Choix de la magie", {
+      possible: magies,
+      fieldName: "Magie",
+    });
+  }
+
+  return metier;
+}
+
+export function intersect(array1, array2) {
+  return array1.filter((value) => array2.includes(value));
+}
+
+async function openDialogChoix(title, data) {
+  const urlTemplate = `systems/tylestel/templates/dialog/choix-attribut.html`;
+  const content = await renderTemplate(urlTemplate, data);
+
+  return new Promise((resolve) => {
+    new Dialog({
+      title,
+      content,
+      buttons: {
+        std: {
+          label: "Valider",
+          callback: (html) => {
+            const dialogData = html[0].querySelector("form");
+            resolve(dialogData.choix.value);
+          },
+        },
+      },
+      close: (html) => {
+        resolve();
+      },
+    }).render(true);
   });
 }
