@@ -102,6 +102,10 @@
   align-items: center;
 }
 
+.form-choix-test select {
+  text-transform: capitalize;
+}
+
 .sheet.tylestel .window-content {
   background: white;
 }

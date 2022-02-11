@@ -19,6 +19,7 @@ export const preloadHandlebarsTemplates = async function () {
     "part/item-headers.html",
     "part/select-attribut.html",
     "part/select-metier.html",
+    "dialog/number-dialog.html",
   ];
 
   const templatesPath = templates.map((t) => `${basePath}/${t}`);

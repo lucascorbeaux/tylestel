@@ -1,0 +1,30 @@
+<form onsubmit="return false;" class="form-choix-test">
+    <div class="form-group">
+        <label for="roll-attribut">
+            Attribut :
+        </label>
+        <select
+            name="attribut"
+            id="roll-attribut"
+        >
+            {{#each actor.data.data.attributs as |attribut id|}}
+            {{ id }}
+            <option value="{{id}}">{{ id }}</option>
+            {{/each}}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="roll-metier">
+            Métier :
+        </label>
+        <select
+            name="metier"
+            id="roll-metier"
+        >
+            {{#each actor.data.data.metiers as |metier id|}}
+            {{ id }}
+            <option value="{{id}}">{{ id }}</option>
+            {{/each}}
+        </select>
+    </div>
+</form>

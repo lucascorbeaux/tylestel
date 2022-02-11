@@ -47,8 +47,6 @@ export class CompteurVie extends LitElement {
           grid-template-columns: repeat(${this.nbColonne}, ${boxSize});
         }
       </style>
-      <buttton @click="${this.addBlessure}">Blessures</buttton>
-      <buttton @click="${this.soinBlessure}">Soins</buttton>
       <div class="gridCompteurVie">
         ${this.box.map((b) => this.renderBox(b))}
       </div>
@@ -57,16 +55,6 @@ export class CompteurVie extends LitElement {
 
   renderBox(box) {
     return html`<div class="boxVie">${box ? `X` : ""}</div>`;
-  }
-
-  addBlessure(e) {
-    this.current = --this.current;
-    this.dispatchEvent(new CustomEvent("change", { detail: this.current }));
-  }
-
-  soinBlessure(e) {
-    this.current = ++this.current;
-    this.dispatchEvent(new CustomEvent("change", { detail: this.current }));
   }
 }
 

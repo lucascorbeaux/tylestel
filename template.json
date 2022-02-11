@@ -45,13 +45,21 @@
           "our": 0,
           "pso": 0
         }
+      },
+      "vieTemplates": {
+        "vie": {
+          "min": 0,
+          "max": 15,
+          "current": 15
+        }
       }
     },
     "heros": {
       "templates": [
         "attributsTemplate",
         "metiersTemplate",
-        "divinitesTemplates"
+        "divinitesTemplates",
+        "vieTemplates"
       ]
     },
     "monstres": {

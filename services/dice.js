@@ -19,16 +19,16 @@ export function printManoeuvreAndLaunchDice(actorId, manoeuvres) {
 }
 
 export function launchDice(actorId, attribut, metier) {
-    const actor = game.actors.get(actorId);
+  const actor = game.actors.get(actorId);
 
-    const actorData = actor.data.data;
-    const attributValue = actorData.attributs[attribut];
-    const metierValue = actorData.metiers[metier];
+  const actorData = actor.data.data;
+  const attributValue = actorData.attributs[attribut];
+  const metierValue = actorData.metiers[metier];
 
-    const rollFormula = `1d6x+1d6+${attributValue}+${metierValue}`;
-    const roll = new Roll(rollFormula, actorData);
-    roll.roll().toMessage({
-        speaker: ChatMessage.getSpeaker({ actor }),
-        flavor: `Attribut + Metier`,
-    });
+  const rollFormula = `1d6x+1d6+${attributValue}+${metierValue}`;
+  const roll = new Roll(rollFormula, actorData);
+  roll.roll().toMessage({
+      speaker: ChatMessage.getSpeaker({ actor }),
+      flavor: `Attribut + Metier`,
+  });
 }
