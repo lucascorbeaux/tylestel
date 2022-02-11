@@ -19,6 +19,10 @@ export class CompteurVie extends LitElement {
       align-items: center;
       color: #d5d5d5;
     }
+
+    h3 {
+      text-align: center;
+    }
   `;
 
   constructor() {
@@ -47,6 +51,7 @@ export class CompteurVie extends LitElement {
           grid-template-columns: repeat(${this.nbColonne}, ${boxSize});
         }
       </style>
+      <h3>Vie</h3>
       <div class="gridCompteurVie">
         ${this.box.map((b) => this.renderBox(b))}
       </div>

@@ -1,6 +1,21 @@
 .sheet.tylestel.actor .sheet-body {
   flex-direction: column;
 }
+.sheet.tylestel.actor .tabs {
+  overflow: hidden;
+}
+.sheet.tylestel.actor .tabs .item {
+  height: 32px;
+  border: 0;
+}
+.sheet.tylestel.actor .tabs .item.active {
+  text-shadow: none;
+  background-color: rgba(255, 231, 210, 0.5);
+}
+.sheet.tylestel.actor .tabs .item:hover {
+  background-color: rgba(255, 220, 180, 0.9);
+  text-shadow: none;
+}
 .sheet.tylestel.actor ul + ul {
   margin-top: 1rem;
 }
@@ -62,7 +77,8 @@
 }
 .sheet.tylestel.actor ul.divinites {
   flex-direction: column;
-  max-width: 18em;
+  max-height: 15em;
+  padding-left: 2rem;
 }
 .sheet.tylestel.actor ul.divinites li {
   flex-direction: row-reverse;
@@ -100,6 +116,29 @@
   background: no-repeat center/cover url("/systems/tylestel/assets/fdp/metier.png");
   justify-content: center;
   align-items: center;
+}
+
+div.destinee {
+  width: 8rem;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: flex-end;
+}
+div.destinee .destinee-container {
+  height: 7em;
+  width: 7em;
+  display: flex;
+  background: no-repeat center/cover url("/systems/tylestel/assets/fdp/attribut.png");
+  justify-content: center;
+  align-items: center;
+}
+div.destinee .destinee-container input {
+  border: 0px;
+  text-align: center;
+  background-color: transparent;
+  max-width: 100%;
 }
 
 .form-choix-test select {

@@ -1,6 +1,6 @@
 import { LitElement, css, html } from "https://unpkg.com/lit?module";
 import { buttonCss } from "./cssCommun.js";
-import { printManoeuvreAndLaunchDice } from "../services/dice.js";
+import { executeManoeuvres } from "../services/dice.js";
 
 export class Manoeuvre extends LitElement {
   static properties = {
@@ -54,6 +54,18 @@ export class Manoeuvre extends LitElement {
       margin-top: 0.4rem;
     }
 
+    .toolbar > * {
+      flex: 1;
+    }
+
+    .recuperation-btn {
+      width: 100%;
+    }
+
+    .delete-btn {
+      max-width: 6rem;
+    }
+
     ${buttonCss}
   `;
 
@@ -72,6 +84,12 @@ export class Manoeuvre extends LitElement {
     return this.visibleData.filter((d) => d.use);
   }
 
+  get usingManoeuvreEpuise() {
+    return this.usingManoeuvre.filter(
+      (m) => m.data.nbUtilisationsMax - m.data.nbUtilisationsActuel > 0
+    );
+  }
+
   render() {
     return html`
       <h2>${this.titre}</h2>
@@ -85,13 +103,17 @@ export class Manoeuvre extends LitElement {
   renderToolbar() {
     if (this.modeSelection) {
       return html` <div class="toolbar">
-        <button>Enregistrer le choix</button>
+        <button @click=${this.save}>Enregistrer le choix</button>
       </div>`;
     }
     return html`
       <div class="toolbar">
-        <button @click="${this.actionLaunch}">Lancer l'action</button
-        ><button>Faire la récupération</button>
+        <button @click="${this.actionLaunch}">Lancer l'action</button>
+        <ty-popover content="Vous pouvez récupérer jusqu'à deux manoeuvres."
+          ><button class="recuperation-btn" @click="${this.recuperer}">
+            Récupérer les actions
+          </button>
+        </ty-popover>
       </div>
     `;
   }
@@ -134,14 +156,18 @@ export class Manoeuvre extends LitElement {
   renderSelection(manoeuvre, manoeuvreData) {
     if (this.modeSelection) {
       return html`
-        <label
-          >Dans la main
-          <input
-            type="checkbox"
-            value="${manoeuvre._id}"
-            @click="${this.toogleActif}"
-            ?checked=${manoeuvreData.actif}
-        /></label>
+        <div class="col">
+          <label
+            >Dans la main
+            <input
+              type="checkbox"
+              value="${manoeuvre._id}"
+              @click="${this.toogleActif}"
+              ?checked=${manoeuvreData.actif}
+          /></label>
+
+          <button class="delete-btn" data-manoeuvre="${manoeuvre._id}" @click=${this.deleteItem} type="button">Supprimer</button>
+        </div>
       `;
     }
     return html` <label
@@ -171,9 +197,34 @@ export class Manoeuvre extends LitElement {
       ui.notifications.error(
         `Toutes les manoeuvres selectionnées doivent avoir le même test.`
       );
-    } else {
-      printManoeuvreAndLaunchDice(this.actorId, this.usingManoeuvre);
+      return;
     }
+
+    if (this.usingManoeuvre.length != manoeuvre.length) {
+      ui.notifications.error(`Une manoeuvre choisie est épuisée.`);
+      return;
+    }
+
+    executeManoeuvres(this.actorId, this.usingManoeuvre);
+  }
+
+  recuperer() {
+    const manoeuvre = this.usingManoeuvre;
+    if (this.usingManoeuvreEpuise.length) {
+      ui.notifications.error(
+        "Les manoeuvres doivent avoir été entièrement utilisé"
+      );
+      return;
+    }
+
+    const actor = game.actors.get(this.actorId);
+
+    manoeuvre.forEach((manoeuvre) => {
+      const item = actor.items.get(manoeuvre._id);
+      item.update({
+        data: { nbUtilisationsActuel: manoeuvre.data.nbUtilisationsMax },
+      });
+    });
   }
 
   canExecute() {
@@ -182,6 +233,22 @@ export class Manoeuvre extends LitElement {
       this.usingManoeuvre.map((m) => m.data.attribut + m.data.metier)
     );
     return test.size === 1;
+  }
+
+  deleteItem(event) {
+    const manoeuvreId = event.currentTarget.dataset.manoeuvre;
+    const actor = game.actors.get(this.actorId);
+
+    actor.deleteOwnedItem(manoeuvreId);
+  }
+
+  save() {
+    const actor = game.actors.get(this.actorId);
+
+    this.data.forEach((manoeuvre) => {
+      const item = actor.items.get(manoeuvre._id);
+      item.update({ data: { actif: manoeuvre.data.actif } });
+    });
   }
 }
 

@@ -30,6 +30,7 @@ export class HerosToolbar extends LitElement {
       <button @click=${this.encaisserDommage}>Encaisser des dommages</button>
       <button @click=${this.regagnerVie}>Regagner de la vie</button>
       <button @click=${this.effectuerTest}>Effectuer une action</button>
+      <slot></slot>
     `;
   }
 

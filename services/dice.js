@@ -1,4 +1,4 @@
-export function printManoeuvreAndLaunchDice(actorId, manoeuvres) {
+export function executeManoeuvres(actorId, manoeuvres) {
   const actor = game.actors.get(actorId);
   manoeuvres.forEach((manoeuvre) => {
     const name = manoeuvre.name;
@@ -12,6 +12,11 @@ export function printManoeuvreAndLaunchDice(actorId, manoeuvres) {
       },
       {}
     );
+
+    const item = actor.items.get(manoeuvre._id);
+    item.update({
+      data: { nbUtilisationsActuel: manoeuvre.data.nbUtilisationsActuel + 1 },
+    });
   });
 
   const firstManoeuvre = manoeuvres[0];

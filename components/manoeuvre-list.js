@@ -1,9 +1,10 @@
 import { LitElement, css, html } from "https://unpkg.com/lit?module";
 import { htmlObjectConverter } from "./converter.js";
+import { buttonCss } from "./cssCommun.js";
 
 export class ManoeuvreList extends LitElement {
   static properties = {
-    actorId: {type: String},
+    actorId: { type: String },
     modeSelection: { state: true },
     actions: {
       converter: htmlObjectConverter,
@@ -13,7 +14,9 @@ export class ManoeuvreList extends LitElement {
     },
   };
   // Define scoped styles right with your component, in plain CSS
-  static styles = css``;
+  static styles = css`
+    ${buttonCss}
+  `;
 
   constructor() {
     super();
@@ -26,7 +29,9 @@ export class ManoeuvreList extends LitElement {
 
   render() {
     return html`
-      <button @click="${this.toogleModeSelection}">Mode selection</button>
+      <ty-heros-toolbar>
+        <button @click="${this.toogleModeSelection}">${this.modeSelection ? 'Votre main de manoeuvres' : 'Choisir les manoeuvres'}</button>
+      </ty-heros-toolbar>
       <manoeuvre-utilisation
         .data=${this.actions}
         .modeSelection=${this.modeSelection}

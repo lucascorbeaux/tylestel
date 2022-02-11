@@ -60,7 +60,12 @@
         "metiersTemplate",
         "divinitesTemplates",
         "vieTemplates"
-      ]
+      ],
+      "destinee": {
+        "min": 0,
+        "max": 3,
+        "current": 2
+      }
     },
     "monstres": {
       "templates": []

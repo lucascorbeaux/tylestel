@@ -25,8 +25,8 @@ export class Manoeuvre extends LitElement {
       height: 3rem;
       top: -3.2rem;
       font-size: 0.8rem;
-      width: 96%;
-      left: 2%;
+      width: 86%;
+      left: 4%;
       transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
       z-index: 10;
     }
