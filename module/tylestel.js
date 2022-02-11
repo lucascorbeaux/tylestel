@@ -36,3 +36,22 @@ Hooks.once("init", function () {
   declareComponent();
   return preloadHandlebarsTemplates();
 });
+
+
+Hooks.on("preCreateItem", function (document, options, userId) {
+  document.data.update({
+    img: "systems/tylestel/assets/icons/" + document.data.type + ".png",
+  });
+});
+
+Hooks.on("preCreateActor", function (entity, options, userId) {
+  entity.data.update({
+    img: "systems/tylestel/assets/icons/" + entity.type + ".png",
+  })
+
+  if (entity.name == "") {
+    entity.data.update({
+      name: "Nouveau " + entity.type[0].toUpperCase() + entity.type.slice(1),
+    })
+  }
+});
