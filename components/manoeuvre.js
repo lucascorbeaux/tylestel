@@ -143,13 +143,23 @@ export class Manoeuvre extends LitElement {
   renderUtilisations(manoeuvreData) {
     if (this.modeSelection) {
       return html` <div class="utilisations">
-        Nombre d'utilisations : ${manoeuvreData.nbUtilisationsMax}
+        ${manoeuvreData.nbUtilisationsMax == -1 ? 'Aucune limite d\'utilisation' : `Nombre d'utilisations : ${manoeuvreData.nbUtilisationsMax}`}
       </div>`;
     }
+
+    if (manoeuvreData.nbUtilisationsMax == -1) {
+      return html`
+        <div class="utilisations">
+          Aucun limite d'utilisation
+        </div>
+      `; 
+    }
+  
     return html`
       <div class="utilisations">
         Utilisations disponible :
-        ${manoeuvreData.nbUtilisationsMax - manoeuvreData.nbUtilisationsActuel}
+        ${manoeuvreData.nbUtilisationsMax -
+        manoeuvreData.nbUtilisationsActuel}
         / ${manoeuvreData.nbUtilisationsMax}
       </div>
     `;
@@ -218,7 +228,7 @@ export class Manoeuvre extends LitElement {
     manoeuvre.forEach((manoeuvre) => {
       const item = actor.items.get(manoeuvre._id);
       item.update({
-        data: { nbUtilisationsActuel: manoeuvre.data.nbUtilisationsMax },
+        data: { nbUtilisationsActuel: 0 },
       });
     });
   }
