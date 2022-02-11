@@ -14,5 +14,20 @@
   "url": "https://github.com/Armaklan/tylestel",
   "manifest": "https://raw.githubusercontent.com/Armaklan/tylestel/master/system.json",
   "download": "https://github.com/Armaklan/tylestel/archive/1.0.0.zip",
-  "packs": []
+  "packs": [
+    {
+      "name": "actions",
+      "label": "Tylestel - Actions",
+      "path": "pack/actions.db",
+      "module": "tylestel",
+      "entity": "Item"
+    },
+    {
+      "name": "reactions",
+      "label": "Tylestel - Reactions",
+      "path": "pack/reactions.db",
+      "module": "tylestel",
+      "entity": "Item"
+    }
+  ]
 }
