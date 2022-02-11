@@ -1,12 +1,12 @@
 import { LitElement, css, html } from "https://unpkg.com/lit?module";
-import { htmlObjectConverter } from './converter.js';
+import { printManoeuvreAndLaunchDice } from "../services/dice.js";
 
 export class Manoeuvre extends LitElement {
   static properties = {
+    actorId: { type: String },
     titre: { type: String },
-    data: {
-      converter: htmlObjectConverter,
-    },
+    modeSelection: { type: Boolean },
+    data: { type: Object },
   };
   // Define scoped styles right with your component, in plain CSS
   static styles = css`
@@ -29,7 +29,7 @@ export class Manoeuvre extends LitElement {
       flex: 1 1 100%;
     }
 
-    header {
+    .card-manoeuvre header {
       text-align: center;
       font-weight: bold;
       font-size: 1.2em;
@@ -37,7 +37,7 @@ export class Manoeuvre extends LitElement {
       justify-content: space-between;
     }
 
-    article {
+    .card-manoeuvre article {
       display: flex;
       justify-content: space-between;
     }
@@ -67,17 +67,39 @@ export class Manoeuvre extends LitElement {
 
   constructor() {
     super();
+    this.modeSelection = false;
+  }
+
+  get visibleData() {
+    return this.modeSelection
+      ? this.data
+      : this.data.filter((d) => d.data.actif);
+  }
+
+  get usingManoeuvre() {
+    return this.visibleData.filter((d) => d.use);
   }
 
   render() {
-    console.warn(this.data);
     return html`
       <h2>${this.titre}</h2>
       <div class="container">
-        ${this.data?.map((d) => this.renderManoeuvre(d))}
+        ${this.visibleData?.map((d) => this.renderManoeuvre(d))}
       </div>
+      ${this.renderToolbar()}
+    `;
+  }
+
+  renderToolbar() {
+    if (this.modeSelection) {
+      return html` <div class="toolbar">
+        <button>Enregistrer le choix</button>
+      </div>`;
+    }
+    return html`
       <div class="toolbar">
-        <button>Lancer l'action</button><button>Faire la récupération</button>
+        <button @click="${this.actionLaunch}">Lancer l'action</button
+        ><button>Faire la récupération</button>
       </div>
     `;
   }
@@ -89,22 +111,88 @@ export class Manoeuvre extends LitElement {
         <section class="card-manoeuvre">
           <header>
             <span>${manoeuvre.name}</span>
-            <label><input type="checkbox" /></label>
+            ${this.renderSelection(manoeuvre, manoeuvreData)}
           </header>
           <article>
             <div class="test">
               ${manoeuvreData.attribut} - ${manoeuvreData.metier}
             </div>
-            <div class="utilisations">
-              Utilisations disponible :
-              ${manoeuvreData.nbUtilisationsMax -
-              manoeuvreData.nbUtilisationsActuel}
-              / ${manoeuvreData.nbUtilisationsMax}
-            </div>
+            ${this.renderUtilisations(manoeuvreData)}
           </article>
         </section>
       </ty-popover>
     `;
+  }
+
+  renderUtilisations(manoeuvreData) {
+    if (this.modeSelection) {
+      return html` <div class="utilisations">
+        Nombre d'utilisations : ${manoeuvreData.nbUtilisationsMax}
+      </div>`;
+    }
+    return html`
+      <div class="utilisations">
+        Utilisations disponible :
+        ${manoeuvreData.nbUtilisationsMax - manoeuvreData.nbUtilisationsActuel}
+        / ${manoeuvreData.nbUtilisationsMax}
+      </div>
+    `;
+  }
+
+  renderSelection(manoeuvre, manoeuvreData) {
+    if (this.modeSelection) {
+      return html`
+        <label
+          >Dans la main
+          <input
+            type="checkbox"
+            value="${manoeuvre._id}"
+            @click="${this.toogleActif}"
+            ?checked=${manoeuvreData.actif}
+        /></label>
+      `;
+    }
+    return html` <label
+      >Utiliser sur l'action<input
+        type="checkbox"
+        value="${manoeuvre._id}"
+        @click="${this.toogleCheck}"
+        ?checked=${manoeuvreData.use}
+    /></label>`;
+  }
+
+  toogleCheck(event) {
+    const id = event.target.value;
+    const manoeuvre = this.data.find((d) => d._id === id);
+    manoeuvre.use = !manoeuvre.use;
+  }
+
+  toogleActif(event) {
+    const id = event.target.value;
+    const manoeuvre = this.data.find((d) => d._id === id);
+    manoeuvre.data.actif = !manoeuvre.data.actif;
+  }
+
+  actionLaunch() {
+    const manoeuvre = this.usingManoeuvre;
+    if (!this.canExecute()) {
+      ui.notifications.error(
+        `Toutes les manoeuvres selectionnées doivent avoir le même test.`
+      );
+    } else {
+      printManoeuvreAndLaunchDice(
+        this.actorId,
+        this.usingManoeuvre
+      );
+    }    
+  }
+
+  canExecute() {
+    if (!this.usingManoeuvre.length) return false;
+    const test = new Set(
+      this.usingManoeuvre.map((m) => m.data.attribut + m.data.metier)
+    );
+    return test.size === 1;
   }
 }
 

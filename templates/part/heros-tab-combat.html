@@ -1,10 +1,3 @@
 <div class="col-2">
-    <manoeuvre-utilisation
-        data={{activeActions}}
-        titre="Actions"
-    ></manoeuvre-utilisation>
-    <manoeuvre-utilisation
-        data={{activeReactions}}
-        titre="Reactions"
-    ></manoeuvre-utilisation>
+    <manoeuvre-list actorId="{{ actor.data._id }}" actions="{{actions}}" reactions="{{reactions}}"></manoeuvre-list>
 </div>
