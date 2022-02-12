@@ -1,4 +1,5 @@
 <select name={{field}}>
+    <option value="" {{#ifEquals value ''}}selected{{/ifEquals}}>Aucun</option>
     {{selectOptions options selected=value localize=false}}
     <option
         value="variable"

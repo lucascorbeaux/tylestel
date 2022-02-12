@@ -1,4 +1,5 @@
 <select name="data.attribut" value="{{value}}">
+    <option value="" {{#ifEquals value ''}}selected{{/ifEquals}}>Aucun</option>
     {{selectOptions options selected=value localize=false}}
     <option value="variable" {{#ifEquals value 'variable'}}selected{{/ifEquals}}>Variable</option>
     {{#contains "/" value}}
