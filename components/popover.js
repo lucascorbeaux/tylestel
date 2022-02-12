@@ -22,8 +22,8 @@ export class Manoeuvre extends LitElement {
         rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
       border-radius: 0.25rem;
       padding: 0.2rem 0.6rem;
-      height: 3rem;
-      top: -3.2rem;
+      height: fit-content;
+      top: 110%;
       font-size: 0.8rem;
       width: 86%;
       left: 4%;
