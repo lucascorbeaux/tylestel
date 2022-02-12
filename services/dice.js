@@ -89,7 +89,7 @@ export function launchDice(actorId, attribut, metier) {
 
 
 export async function determinerAttribut(manoeuvres) {
-  const attributsPossibleParManoeuvre = manoeuvres.map((m) => m.data.attribut === 'Variable' ? attributs : m.data.attribut.split("/"));
+  const attributsPossibleParManoeuvre = manoeuvres.map((m) => m.data.attribut === 'variable' ? attributs : m.data.attribut.split("/"));
   const attributsPossible = attributsPossibleParManoeuvre.reduce(
     (prev, current) => {
       if (prev === null) {
@@ -115,7 +115,7 @@ export async function determinerAttribut(manoeuvres) {
 
 export async function determinerMetier(manoeuvres) {
   const metiersPossibleParManoeuvre = manoeuvres.map(
-    (m) => (m.data.metier === "Variable" ? metiers : m.data.metier.split("/"))
+    (m) => (m.data.metier === "variable" ? metiers : m.data.metier.split("/"))
   );
   const metiersPossibles = metiersPossibleParManoeuvre.reduce(
     (prev, current) => {

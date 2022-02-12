@@ -32,6 +32,17 @@ Hooks.once("init", function () {
     makeDefault: true,
   });
 
+  Handlebars.registerHelper("contains", function (needle, haystack, options) {
+    needle = Handlebars.escapeExpression(needle);
+    haystack = Handlebars.escapeExpression(haystack);
+    return haystack.indexOf(needle) > -1
+      ? options.fn(this)
+      : options.inverse(this);
+  });
+
+  Handlebars.registerHelper("ifEquals", function (arg1, arg2, options) {
+    return arg1 == arg2 ? options.fn(this) : options.inverse(this);
+  });
 
   declareComponent();
   return preloadHandlebarsTemplates();
