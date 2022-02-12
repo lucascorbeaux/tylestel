@@ -4,6 +4,7 @@ import HeroSheet from "./actor/sheet/hero.js";
 import { preloadHandlebarsTemplates } from "./templates.js";
 import PouvoirSheet from "./item/sheet/pouvoir.js";
 import ManoeuvreSheet from "./item/sheet/manoeuvre.js";
+import ArmeSheet from "./item/sheet/arme.js";
 import { declareComponent } from "../components/index.js";
 
 Hooks.once("init", function () {
@@ -25,6 +26,10 @@ Hooks.once("init", function () {
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("tylestel", PouvoirSheet, {
     types: ["pouvoir"],
+    makeDefault: true,
+  });
+  Items.registerSheet("tylestel", ArmeSheet, {
+    types: ["arme"],
     makeDefault: true,
   });
   Items.registerSheet("tylestel", ManoeuvreSheet, {

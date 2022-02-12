@@ -6,6 +6,7 @@ import {
   getActiveReactions,
   getPouvoir,
   getReactions,
+  getItems
 } from "../../helper.js";
 
 export default class HeroSheet extends ActorSheet {
@@ -37,6 +38,10 @@ export default class HeroSheet extends ActorSheet {
     sheetData.reactions = encodeToLitObject(getReactions(sheetData));
     sheetData.activeActions = encodeToLitObject(getActiveActions(sheetData));
     sheetData.activeReactions = encodeToLitObject(getActiveReactions(sheetData));
+    sheetData.armes = encodeToLitObject(getItems(sheetData, 'arme'));
+    sheetData.armures = encodeToLitObject(getItems(sheetData, "armure"));
+    sheetData.equipements = encodeToLitObject(getItems(sheetData, "equipement"));
+    sheetData.familiers = encodeToLitObject(getItems(sheetData, "familier"));
     
     console.debug(sheetData);
     return sheetData;

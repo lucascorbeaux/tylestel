@@ -65,6 +65,11 @@
         "min": 0,
         "max": 3,
         "current": 2
+      },
+      "renommee": {
+        "min": 0,
+        "max": 100,
+        "current": 0
       }
     },
     "monstres": {
@@ -72,7 +77,7 @@
     }
   },
   "Item": {
-    "types": ["actions", "reactions", "pouvoir"],
+    "types": ["actions", "reactions", "pouvoir", "armure", "arme", "equipement", "familier"],
     "templates": {
       "base": {
         "description": ""
@@ -98,6 +103,28 @@
     },
     "reactions": {
       "templates": ["base", "manoeuvres"]
+    },
+    "arme": {
+      "templates": ["base"],
+      "degats": 1,
+      "initiative": 0,
+      "encaissement": 0,
+      "portee": "",
+      "actif": true
+    },
+    "armure": {
+      "templates": ["base"],
+      "resistance": 0,
+      "actif": true
+    },
+    "equipement": {
+      "templates": ["base"]
+    },
+    "familier": {
+      "templates": ["base"],
+      "type": "",
+      "soin": false,
+      "maltraitance": 0
     }
   }
 }

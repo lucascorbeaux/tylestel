@@ -1,0 +1,55 @@
+<form
+    class="{{cssClass}}"
+    autocomplete="off"
+>
+
+    {{!-- Sheet Header --}}
+    <header class="sheet-header">
+        {{> 'systems/tylestel/templates/part/item-headers.html' }}
+    </header>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        <div class="form-group">
+            <label for="data.degat">Degâts</label>
+            <input
+                name="data.degat"
+                id="data.degat"
+                type="number"
+                value="{{data.data.degat}}"
+                data-dtype="Number"
+            />
+        </div>
+        <div class="form-group">
+            <label for="data.initiative">Initiative</label>
+            <input
+                name="data.initiative"
+                id="data.initiative"
+                type="number"
+                value="{{data.data.initiative}}"
+                data-dtype="Number"
+            />
+        </div>
+        <div class="form-group">
+            <label for="data.encaissement">Encaissement</label>
+            <input
+                name="data.encaissement"
+                id="data.encaissement"
+                type="number"
+                value="{{data.data.encaissement}}"
+                data-dtype="Number"
+            />
+        </div>
+        <div class="form-group">
+            <label for="data.portee">Portee</label>
+            <input
+                name="data.portee"
+                id="data.portee"
+                type="text"
+                value="{{data.data.portee}}"
+                data-dtype="String"
+            />
+        </div>
+        {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable}}
+    </section>
+</form>

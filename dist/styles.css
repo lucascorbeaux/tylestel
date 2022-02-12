@@ -187,16 +187,16 @@ div.destinee .destinee-container input {
   flex: 2;
 }
 
-.tylestel.sheet.manoeuvre .item-subtitle, .tylestel.sheet.pouvoir .item-subtitle {
+.tylestel.sheet.manoeuvre .item-subtitle, .tylestel.sheet.item .item-subtitle {
   text-transform: capitalize;
   color: #5D5D5D;
   margin-left: 0.5rem;
   margin-top: -0.4rem;
 }
-.tylestel.sheet.manoeuvre .sheet-body, .tylestel.sheet.pouvoir .sheet-body {
+.tylestel.sheet.manoeuvre .sheet-body, .tylestel.sheet.item .sheet-body {
   flex-direction: column;
 }
-.tylestel.sheet.manoeuvre .sheet-body .editor, .tylestel.sheet.pouvoir .sheet-body .editor {
+.tylestel.sheet.manoeuvre .sheet-body .editor, .tylestel.sheet.item .sheet-body .editor {
   flex: 1 1 100%;
 }
 

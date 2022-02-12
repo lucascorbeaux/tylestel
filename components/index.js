@@ -4,6 +4,7 @@ import { declareCompteurVie } from "./vie.js";
 import { declarePopover } from "./popover.js";
 import { declareHerosToolbar } from './heros-toolbar.js';
 import { declarePouvoirList } from "./pouvoir-list.js";
+import { declareArmeList } from "./items/arme-list.js";
 
 export function declareComponent() {
   declarePopover();
@@ -12,4 +13,5 @@ export function declareComponent() {
   declareManoeuvreList();
   declareHerosToolbar();
   declarePouvoirList();
+  declareArmeList();
 }
