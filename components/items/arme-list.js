@@ -58,7 +58,7 @@ export class ArmeList extends LitElement {
             <span><b>Dégâts : </b> ${arme.data.degats}</span>
             <span><b>Initiative : </b> ${arme.data.initiative}</span>
             <span><b>Encaissement : </b> ${arme.data.encaissement}</span>
-            <span><b>Portée : </b> ${arme.data.portée}</span>
+            <span><b>Portée : </b> ${arme.data.portee}</span>
           </div>
           <div>${unsafeHTML(arme.data.description)}</div>
         </article>
