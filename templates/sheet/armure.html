@@ -1,0 +1,25 @@
+<form
+    class="{{cssClass}}"
+    autocomplete="off"
+>
+
+    {{!-- Sheet Header --}}
+    <header class="sheet-header">
+        {{> 'systems/tylestel/templates/part/item-headers.html' }}
+    </header>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        <div class="form-group">
+            <label for="data.resistance">Résistance</label>
+            <input
+                name="data.resistance"
+                id="data.resistance"
+                type="number"
+                value="{{data.data.resistance}}"
+                data-dtype="Number"
+            />
+        </div>
+        {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable}}
+    </section>
+</form>

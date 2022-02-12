@@ -5,6 +5,7 @@ import { preloadHandlebarsTemplates } from "./templates.js";
 import PouvoirSheet from "./item/sheet/pouvoir.js";
 import ManoeuvreSheet from "./item/sheet/manoeuvre.js";
 import ArmeSheet from "./item/sheet/arme.js";
+import ArmureSheet from "./item/sheet/armure.js";
 import { declareComponent } from "../components/index.js";
 
 Hooks.once("init", function () {
@@ -30,6 +31,10 @@ Hooks.once("init", function () {
   });
   Items.registerSheet("tylestel", ArmeSheet, {
     types: ["arme"],
+    makeDefault: true,
+  });
+  Items.registerSheet("tylestel", ArmureSheet, {
+    types: ["armure"],
     makeDefault: true,
   });
   Items.registerSheet("tylestel", ManoeuvreSheet, {
