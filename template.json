@@ -124,7 +124,8 @@
       "templates": ["base"],
       "type": "",
       "soin": false,
-      "maltraitance": 0
+      "maltraitance": 0,
+      "points": 5
     }
   }
 }
