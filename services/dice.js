@@ -67,7 +67,7 @@ export async function executeManoeuvres(actorId, manoeuvres) {
   const attribut = await determinerAttribut(manoeuvres);
   const metier = await determinerMetier(manoeuvres);
 
-  if((!attribut || !metier) && manoeuvres[0].attribut) {
+  if((!attribut || !metier) && manoeuvres[0].data.attribut) {
     ui.notifications.error(`Les manoeuvres sont incompatibles.`);
     return;
   }
@@ -93,7 +93,7 @@ export async function executeManoeuvres(actorId, manoeuvres) {
     }
   });
 
-  if(attribut & metier) {
+  if(!!attribut && !!metier) {
     launchDice(actorId, attribut, metier);
   }
 }
