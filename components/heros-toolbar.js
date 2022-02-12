@@ -5,6 +5,7 @@ import { launchDice } from "../services/dice.js";
 export class HerosToolbar extends LitElement {
   static properties = {
     actorId: { type: String },
+    heros: { type: Boolean }
   };
   // Define scoped styles right with your component, in plain CSS
   static styles = css`
@@ -29,7 +30,7 @@ export class HerosToolbar extends LitElement {
     return html`
       <button @click=${this.encaisserDommage}>Encaisser des dommages</button>
       <button @click=${this.regagnerVie}>Regagner de la vie</button>
-      <button @click=${this.effectuerTest}>Effectuer une action</button>
+      ${ this.heros ? html`<button @click=${this.effectuerTest}>Effectuer une action</button>` : '' }
       <slot></slot>
     `;
   }

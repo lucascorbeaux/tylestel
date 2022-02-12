@@ -1,0 +1,152 @@
+<form
+    class="{{cssClass}}"
+    autocomplete="off"
+>
+    {{!-- Sheet Header --}}
+    <header class="sheet-header">
+        {{> 'systems/tylestel/templates/part/heros-headers.html' }}
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable}}
+
+    <ty-heros-toolbar
+        actorId="{{ actor.data._id }}"
+        heros="false"
+    ></ty-heros-toolbar>
+
+    <ul class="attributs-monstres">
+        <li class="attribut">
+            <label>
+                Corps
+            </label>
+            <div class="attribut-container">
+                <input
+                    type="number"
+                    name="data.corps"
+                    value="{{data.data.corps}}"
+                />
+            </div>
+        </li>
+
+        <li class="attribut">
+            <label>
+                Tête
+            </label>
+            <div class="attribut-container">
+                <input
+                    type="number"
+                    name="data.tete"
+                    value="{{data.data.tete}}"
+                />
+            </div>
+        </li>
+
+        <li class="attribut">
+            <label>
+                Dommages
+            </label>
+            <div class="attribut-container">
+                <input
+                    type="number"
+                    name="data.dommages"
+                    value="{{data.data.dommages}}"
+                />
+            </div>
+        </li>
+
+        <li class="attribut">
+            <label>
+                Initiative
+            </label>
+            <div class="attribut-container">
+                <input
+                    type="number"
+                    name="data.initiative"
+                    value="{{data.data.initiative}}"
+                />
+            </div>
+        </li>
+
+        <li class="attribut">
+            <label>
+                Tours entravés
+            </label>
+            <div class="attribut-container">
+                <input
+                    type="number"
+                    name="data.toursEntrave"
+                    value="{{data.data.toursEntrave}}"
+                />
+            </div>
+        </li>
+
+        <li class="attribut">
+            <label>
+                Défense
+            </label>
+            <input
+                type="text"
+                name="data.defense"
+                value="{{data.data.defense}}"
+            />
+        </li>
+
+        <li class="attribut">
+            <label>
+                Encaissement
+            </label>
+            <div class="attribut-container">
+                <input
+                    type="number"
+                    name="data.encaissement"
+                    value="{{data.data.encaissement}}"
+                />
+            </div>
+        </li>
+
+        <li class="attribut">
+            <label>
+                Résistance
+            </label>
+            <div class="attribut-container">
+                <input
+                    type="number"
+                    name="data.resistance"
+                    value="{{data.data.resistance}}"
+                />
+            </div>
+        </li>
+
+        <li class="attribut">
+            <label>
+                Vie max
+            </label>
+            <div class="attribut-container">
+                <input
+                    type="number"
+                    name="data.vie.max"
+                    value="{{data.data.vie.max}}"
+                />
+            </div>
+        </li>
+
+        <compteur-vie
+            max="{{ data.data.vie.max }}"
+            current="{{ data.data.vie.current }}"
+        >
+        </compteur-vie>
+    </ul>
+
+    <manoeuvre-monstre
+        actorId="{{ actor.data._id }}"
+        titre="Actions"
+        data="{{actions}}"
+    ></manoeuvre-monstre>
+
+    <manoeuvre-monstre
+        actorId="{{ actor.data._id }}"
+        titre="Reactions"
+        data="{{reactions}}"
+    ></manoeuvre-monstre>
+</form>

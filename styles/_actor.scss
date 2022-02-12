@@ -186,3 +186,53 @@ div.destinee {
     text-transform: capitalize;
   }
 }
+
+.sheet.tylestel.monstres {
+  
+  .editor {
+    height: 8rem;
+  }
+
+  ul.attributs-monstres {
+    flex-direction: column;
+    align-items: center;
+    max-height: 18rem;
+    display: flex;
+    margin: 0.4rem 0rem;
+    padding: 0;
+    justify-content: flex-start;
+    max-width: 100%;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      width: 12rem;
+    }
+
+    label {
+      text-transform: capitalize;
+    }
+
+    input[type=number] {
+      border: 0px;
+      text-align: center;
+      background-color: transparent;
+      max-width: 100%;
+    }
+
+    input[type=text] {
+      max-width: 6rem;
+    }
+
+    .attribut-container  {
+      height: 1.5em;
+      width: 3em;
+      display: flex;
+      background: no-repeat center/cover url('../assets/fdp/metier.png');
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

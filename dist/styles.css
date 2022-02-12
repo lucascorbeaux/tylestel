@@ -160,6 +160,47 @@ div.destinee .destinee-container input {
   text-transform: capitalize;
 }
 
+.sheet.tylestel.monstres .editor {
+  height: 8rem;
+}
+.sheet.tylestel.monstres ul.attributs-monstres {
+  flex-direction: column;
+  align-items: center;
+  max-height: 18rem;
+  display: flex;
+  margin: 0.4rem 0rem;
+  padding: 0;
+  justify-content: flex-start;
+  max-width: 100%;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.sheet.tylestel.monstres ul.attributs-monstres li {
+  display: flex;
+  justify-content: space-between;
+  width: 12rem;
+}
+.sheet.tylestel.monstres ul.attributs-monstres label {
+  text-transform: capitalize;
+}
+.sheet.tylestel.monstres ul.attributs-monstres input[type=number] {
+  border: 0px;
+  text-align: center;
+  background-color: transparent;
+  max-width: 100%;
+}
+.sheet.tylestel.monstres ul.attributs-monstres input[type=text] {
+  max-width: 6rem;
+}
+.sheet.tylestel.monstres ul.attributs-monstres .attribut-container {
+  height: 1.5em;
+  width: 3em;
+  display: flex;
+  background: no-repeat center/cover url("../assets/fdp/metier.png");
+  justify-content: center;
+  align-items: center;
+}
+
 .sheet.tylestel .window-content {
   background: white;
 }

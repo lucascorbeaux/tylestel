@@ -6,6 +6,7 @@ import { declareHerosToolbar } from './heros-toolbar.js';
 import { declarePouvoirList } from "./pouvoir-list.js";
 import { declareArmeList } from "./items/arme-list.js";
 import { declareArmureList } from "./items/armure-list.js";
+import { declareManoeuvreMonstre } from "./manoeuvre-monstre.js";
 
 export function declareComponent() {
   declarePopover();
@@ -16,4 +17,5 @@ export function declareComponent() {
   declarePouvoirList();
   declareArmeList();
   declareArmureList();
+  declareManoeuvreMonstre();
 }

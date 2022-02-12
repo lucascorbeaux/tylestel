@@ -6,6 +6,8 @@ import PouvoirSheet from "./item/sheet/pouvoir.js";
 import ManoeuvreSheet from "./item/sheet/manoeuvre.js";
 import ArmeSheet from "./item/sheet/arme.js";
 import ArmureSheet from "./item/sheet/armure.js";
+import MonstreSheet from "./actor/sheet/monstre.js";
+import ManoeuvreMonstreSheet from "./item/sheet/manoeuvre-monstre.js";
 import { declareComponent } from "../components/index.js";
 
 Hooks.once("init", function () {
@@ -21,6 +23,10 @@ Hooks.once("init", function () {
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("tylestel", HeroSheet, {
     types: ["heros"],
+    makeDefault: true,
+  });
+  Actors.registerSheet("tylestel", MonstreSheet, {
+    types: ["monstres"],
     makeDefault: true,
   });
 
@@ -40,6 +46,9 @@ Hooks.once("init", function () {
   Items.registerSheet("tylestel", ManoeuvreSheet, {
     types: ["actions", "reactions"],
     makeDefault: true,
+  });
+  Items.registerSheet("tylestel", ManoeuvreMonstreSheet, {
+    types: ["actions", "reactions"]
   });
 
   Handlebars.registerHelper("contains", function (needle, haystack, options) {

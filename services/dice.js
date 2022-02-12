@@ -36,6 +36,30 @@ const metiers = [
   "survie"
 ];
 
+export async function executeManoeuvresMonstres(actorId, manoeuvres) {
+  const actor = game.actors.get(actorId);
+
+  manoeuvres.forEach((manoeuvre) => {
+    const name = manoeuvre.name;
+    const description = manoeuvre.data.description;
+
+    ChatMessage.create(
+      {
+        content: description,
+        speaker: ChatMessage.getSpeaker({ actor }),
+        flavor: name,
+      },
+      {}
+    );
+
+    if (manoeuvre.data.nbUtilisationsMax != -1) {
+      const item = actor.items.get(manoeuvre._id);
+      item.update({
+        data: { nbUtilisationsActuel: manoeuvre.data.nbUtilisationsActuel + 1 },
+      });
+    }
+  });
+}
 
 export async function executeManoeuvres(actorId, manoeuvres) {
   const actor = game.actors.get(actorId);

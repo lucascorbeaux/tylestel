@@ -74,7 +74,18 @@
       "drachmes": 0
     },
     "monstres": {
-      "templates": []
+      "templates": [
+        "vieTemplates"
+      ],
+      "tete": 0,
+      "corps": 0,
+      "dommages": 0,
+      "initiative": 0,
+      "toursEntrave": 1,
+      "defense": "Parade",
+      "encaissement": 0,
+      "resistance": 0,
+      "descripion": ""
     }
   },
   "Item": {
