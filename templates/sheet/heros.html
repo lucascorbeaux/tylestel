@@ -24,6 +24,12 @@
         >
             <h2>Combats</h2>
         </a>
+        <a
+            class="item"
+            data-tab="equipement"
+        >
+            <h2>Pouvoirs et equipements</h2>
+        </a>
     </nav>
 
 
@@ -42,6 +48,13 @@
             data-tab="combat"
         >
             {{> 'systems/tylestel/templates/part/heros-tab-combat.html' }}
+        </div>
+        <div
+            class="tab"
+            data-group="primary"
+            data-tab="equipement"
+        >
+            {{> 'systems/tylestel/templates/part/heros-tab-equipement.html' }}
         </div>
     </section>
 </form>

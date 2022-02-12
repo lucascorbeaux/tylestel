@@ -9,6 +9,7 @@ export const preloadHandlebarsTemplates = async function () {
   const templates = [
     "part/heros-tab-main.html",
     "part/heros-tab-combat.html",
+    "part/heros-tab-equipement.html",
     "part/heros-headers.html",
     "part/heros-attributs.html",
     "part/heros-metiers.html",
@@ -21,7 +22,7 @@ export const preloadHandlebarsTemplates = async function () {
     "part/select-metier.html",
     "dialog/number-dialog.html",
     "dialog/choix-test.html",
-    "dialog/choix-attribut.html",
+    "dialog/choix-attribut.html"
   ];
 
   const templatesPath = templates.map((t) => `${basePath}/${t}`);
