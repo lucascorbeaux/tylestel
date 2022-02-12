@@ -70,7 +70,8 @@
         "min": 0,
         "max": 100,
         "current": 0
-      }
+      },
+      "drachmes": 0
     },
     "monstres": {
       "templates": []

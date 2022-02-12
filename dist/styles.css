@@ -119,18 +119,21 @@
 }
 
 div.destinee {
-  width: 8rem;
   margin-top: 2rem;
+  width: 8rem;
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
   justify-content: flex-end;
 }
+div.destinee label {
+  margin-bottom: 1rem;
+}
 div.destinee .destinee-container {
-  height: 7em;
-  width: 7em;
+  height: 3em;
+  width: 5em;
   display: flex;
-  background: no-repeat center/cover url("/systems/tylestel/assets/fdp/attribut.png");
+  background: no-repeat center/cover url("/systems/tylestel/assets/fdp/metier.png");
   justify-content: center;
   align-items: center;
 }

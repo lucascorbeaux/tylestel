@@ -9,6 +9,13 @@ export class CompteurVie extends LitElement {
   };
   // Define scoped styles right with your component, in plain CSS
   static styles = css`
+
+    :host {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
     :host .boxVie {
       box-sizing: border-box;
       height: ${unsafeCSS(boxSize)};
