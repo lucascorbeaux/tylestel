@@ -145,12 +145,21 @@ export class ManoeuvreMonstre extends LitElement {
 
   renderSelection(manoeuvre, manoeuvreData) {
     return html` <label
-      >Utiliser sur l'action<input
-        type="checkbox"
-        value="${manoeuvre._id}"
-        @click="${this.toogleCheck}"
-        ?checked=${manoeuvreData.use}
-    /></label>`;
+        >Utiliser sur l'action<input
+          type="checkbox"
+          value="${manoeuvre._id}"
+          @click="${this.toogleCheck}"
+          ?checked=${manoeuvreData.use}
+      /></label>
+
+      <button
+        class="delete-btn"
+        data-manoeuvre="${manoeuvre._id}"
+        @click=${this.deleteItem}
+        type="button"
+      >
+        Supprimer
+      </button>`;
   }
 
   toogleCheck(event) {
