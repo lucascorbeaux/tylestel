@@ -1,5 +1,5 @@
 import { LitElement, css, html } from "https://unpkg.com/lit?module";
-import { buttonCss } from "./cssCommun.js";
+import { buttonCss, titreCss } from "./cssCommun.js";
 import { executeManoeuvres } from "../services/dice.js";
 
 export class Manoeuvre extends LitElement {
@@ -67,6 +67,7 @@ export class Manoeuvre extends LitElement {
     }
 
     ${buttonCss}
+    ${titreCss}
   `;
 
   constructor() {
@@ -143,23 +144,20 @@ export class Manoeuvre extends LitElement {
   renderUtilisations(manoeuvreData) {
     if (this.modeSelection) {
       return html` <div class="utilisations">
-        ${manoeuvreData.nbUtilisationsMax == -1 ? 'Aucune limite d\'utilisation' : `Nombre d'utilisations : ${manoeuvreData.nbUtilisationsMax}`}
+        ${manoeuvreData.nbUtilisationsMax == -1
+          ? "Aucune limite d'utilisation"
+          : `Nombre d'utilisations : ${manoeuvreData.nbUtilisationsMax}`}
       </div>`;
     }
 
     if (manoeuvreData.nbUtilisationsMax == -1) {
-      return html`
-        <div class="utilisations">
-          Aucun limite d'utilisation
-        </div>
-      `; 
+      return html` <div class="utilisations">Aucun limite d'utilisation</div> `;
     }
-  
+
     return html`
       <div class="utilisations">
         Utilisations disponible :
-        ${manoeuvreData.nbUtilisationsMax -
-        manoeuvreData.nbUtilisationsActuel}
+        ${manoeuvreData.nbUtilisationsMax - manoeuvreData.nbUtilisationsActuel}
         / ${manoeuvreData.nbUtilisationsMax}
       </div>
     `;
@@ -178,7 +176,14 @@ export class Manoeuvre extends LitElement {
               ?checked=${manoeuvreData.actif}
           /></label>
 
-          <button class="delete-btn" data-manoeuvre="${manoeuvre._id}" @click=${this.deleteItem} type="button">Supprimer</button>
+          <button
+            class="delete-btn"
+            data-manoeuvre="${manoeuvre._id}"
+            @click=${this.deleteItem}
+            type="button"
+          >
+            Supprimer
+          </button>
         </div>
       `;
     }

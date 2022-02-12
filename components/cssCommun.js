@@ -1,5 +1,21 @@
 import { css } from "https://unpkg.com/lit?module";
 
+export const titreCss = css`
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: "Spectral SC", serif;
+  }
+
+  h2 {
+    font-size: 1.5em;
+    border-bottom: 1px solid #782e22;
+    font-weight: normal;
+  }
+`;
+
 export const buttonCss = css`
   button {
     background-color: white;

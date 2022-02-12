@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Spectral+SC&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Halant&display=swap");
 .sheet.tylestel.actor .sheet-body {
   flex-direction: column;
 }
@@ -57,6 +59,10 @@
   flex-direction: column-reverse;
   align-items: center;
 }
+.sheet.tylestel.actor ul.attributs label {
+  font-family: "Halant", serif;
+  font-size: 1.4em;
+}
 .sheet.tylestel.actor ul.attributs .attribut-container {
   height: 7em;
   width: 7em;
@@ -98,6 +104,10 @@
   flex-direction: column;
   flex: 1 1 100%;
 }
+.sheet.tylestel.actor ul.divinites .dieu-header label {
+  font-family: "Halant", serif;
+  font-size: 1.2em;
+}
 .sheet.tylestel.actor ul.divinites .dieu-header .subtitle {
   color: #5D5D5D;
 }
@@ -119,7 +129,7 @@
 }
 
 div.destinee {
-  margin-top: 2rem;
+  margin-top: 1rem;
   width: 8rem;
   display: flex;
   flex-direction: column-reverse;
@@ -127,7 +137,9 @@ div.destinee {
   justify-content: flex-end;
 }
 div.destinee label {
-  margin-bottom: 1rem;
+  margin-bottom: 0.6rem;
+  font-family: "Halant", serif;
+  font-size: 1.2em;
 }
 div.destinee .destinee-container {
   height: 3em;
@@ -150,6 +162,9 @@ div.destinee .destinee-container input {
 
 .sheet.tylestel .window-content {
   background: white;
+}
+.sheet.tylestel h1, .sheet.tylestel h2, .sheet.tylestel h3, .sheet.tylestel h4, .sheet.tylestel h5 {
+  font-family: "Spectral SC", serif;
 }
 .sheet.tylestel > section > form {
   display: flex;

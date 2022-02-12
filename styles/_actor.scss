@@ -64,6 +64,11 @@
       align-items: center;
     }
 
+    label {
+      font-family: 'Halant', serif;
+      font-size: 1.4em;
+    }
+
     .attribut-container  {
       height: 7em;
       width: 7em;
@@ -113,6 +118,11 @@
       flex-direction: column;
       flex: 1 1 100%;
 
+      label {
+        font-family: 'Halant', serif;
+        font-size: 1.2em;
+      }
+
       .subtitle {
         color: #5D5D5D;
       }
@@ -140,7 +150,7 @@
 }
 
 div.destinee {
-    margin-top: 2rem;
+    margin-top: 1rem;
     width: 8rem;
     display: flex;
     flex-direction: column-reverse;
@@ -148,7 +158,9 @@ div.destinee {
     justify-content: flex-end;
 
     label {
-      margin-bottom: 1rem;
+      margin-bottom: 0.6rem;
+      font-family: 'Halant', serif;
+      font-size: 1.2em;
     }
 
     .destinee-container  {
