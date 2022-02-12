@@ -22,7 +22,7 @@ export default class ActorTylestel extends Actor {
     const vieRessource = data.vie;
     const viePerdu = vieRessource.current > vieRessource.max ? 0 : vieRessource.max - vieRessource.current;
     const min = vieRessource.min;
-    const nbColonneSupplementaire = Math.floor((data.attributs.endurance - 1) / 3);
+    const nbColonneSupplementaire = Math.floor((data.attributs.endurance) / 3);
     const max = (2 + nbColonneSupplementaire) * 5;
     const current = this.validateMinMaxData(max - viePerdu, min, max);
     return {
