@@ -81,7 +81,7 @@ export class ArmureList extends LitElement {
     const manoeuvreId = event.currentTarget.dataset.manoeuvre;
     const actor = game.actors.get(this.actorId);
 
-    actor.deleteEmbeddedDocuments("Item", manoeuvreId);
+    actor.deleteEmbeddedDocuments("Item", [manoeuvreId]);
   }
 
   editItem(event) {
