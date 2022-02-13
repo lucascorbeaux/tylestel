@@ -3,8 +3,14 @@
 .sheet.tylestel.actor .sheet-body {
   flex-direction: column;
 }
+.sheet.tylestel.actor .tab {
+  height: 100%;
+}
 .sheet.tylestel.actor .tabs {
   overflow: hidden;
+}
+.sheet.tylestel.actor .tabs h2 {
+  font-size: 1.1rem;
 }
 .sheet.tylestel.actor .tabs .item {
   height: 32px;

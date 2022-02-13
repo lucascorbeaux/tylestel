@@ -3,8 +3,16 @@
     flex-direction: column;
   }
 
+  .tab {
+    height: 100%;
+  }
+    
   .tabs {
     overflow: hidden;
+
+    h2 {
+      font-size: 1.1rem;
+    }
 
     .item {
       height: 32px;

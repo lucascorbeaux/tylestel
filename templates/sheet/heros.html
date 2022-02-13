@@ -16,7 +16,7 @@
             class="item"
             data-tab="main"
         >
-            <h2>Attributs et Métiers</h2>
+            <h2>Caractéristiques</h2>
         </a>
         <a
             class="item"
@@ -28,7 +28,13 @@
             class="item"
             data-tab="equipement"
         >
-            <h2>Pouvoirs et equipements</h2>
+            <h2>Pouvoirs/Equipements</h2>
+        </a>
+        <a
+            class="item"
+            data-tab="notes"
+        >
+            <h2>Notes</h2>
         </a>
     </nav>
 
@@ -55,6 +61,13 @@
             data-tab="equipement"
         >
             {{> 'systems/tylestel/templates/part/heros-tab-equipement.html' }}
+        </div>
+        <div
+            class="tab"
+            data-group="primary"
+            data-tab="notes"
+        >
+            {{editor content=data.data.notes target="data.notes" button=true owner=owner editable=editable}}
         </div>
     </section>
 </form>
