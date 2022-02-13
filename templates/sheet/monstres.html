@@ -136,6 +136,24 @@
             current="{{ data.data.vie.current }}"
         >
         </compteur-vie>
+
+        <ul class="etats">
+            {{#each data.data.etats as |etat id|}}
+            <li class="etat">
+                <label>
+                    {{ etat.label }}
+                    <input
+                        type="checkbox"
+                        name="data.etats.{{id}}.actif"
+                        {{checked
+                        etat.actif
+                        }}
+                    />
+                </label>
+                <span class="subtitle">- {{ etat.malus }} aux tests</span>
+            </li>
+            {{/each}}
+        </ul>
     </ul>
 
     <manoeuvre-monstre

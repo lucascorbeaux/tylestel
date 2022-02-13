@@ -105,7 +105,9 @@ export async function launchDice(actorId, attribut, metier) {
   const attributValue = actorData.attributs[attribut];
   const metierValue = actorData.metiers[metier];
 
-  const rollFormula = `1d6x+1d6+${attributValue}+${metierValue}`;
+  const malusEtat = Object.values(actorData.etats).filter(e => e.actif).reduce((prev, curr) => prev + curr.malus, 0);
+
+  const rollFormula = `1d6x+1d6+${attributValue}+${metierValue}-${malusEtat}`;
   const roll = new Roll(rollFormula, actorData);
   const rollEvaluation = await roll.evaluate({async: true});
   return rollEvaluation.toMessage({
