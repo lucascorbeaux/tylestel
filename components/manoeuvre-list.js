@@ -6,6 +6,8 @@ export class ManoeuvreList extends LitElement {
   static properties = {
     actorId: { type: String },
     modeSelection: { state: true },
+    nbActions: { type: Number },
+    nbReactions: { type: Number },
     actions: {
       converter: htmlObjectConverter,
     },
@@ -42,12 +44,14 @@ export class ManoeuvreList extends LitElement {
         .modeSelection=${this.modeSelection}
         actorId="${this.actorId}"
         titre="Actions"
+        nbCartes="${this.nbActions}"
       ></manoeuvre-utilisation>
       <manoeuvre-utilisation
         .data=${this.reactions}
         .modeSelection=${this.modeSelection}
         actorId="${this.actorId}"
         titre="Reactions"
+        nbCartes="${this.nbReactions}"
       ></manoeuvre-utilisation>
     `;
   }

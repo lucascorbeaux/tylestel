@@ -8,6 +8,7 @@ export class Manoeuvre extends LitElement {
     titre: { type: String },
     modeSelection: { type: Boolean },
     data: { type: Object },
+    nbCartes: { type: Number }
   };
   // Define scoped styles right with your component, in plain CSS
   static styles = css`
@@ -97,7 +98,7 @@ export class Manoeuvre extends LitElement {
   render() {
     return html`
       <style></style>
-      <h2>${this.titre}</h2>
+      <h2>${this.titre} (${this.nbCartes} manoeuvres)</h2>
       <div class="container">
         ${this.visibleData?.map((d) => this.renderManoeuvre(d))}
       </div>
@@ -266,6 +267,13 @@ export class Manoeuvre extends LitElement {
 
   save() {
     const actor = game.actors.get(this.actorId);
+
+    const manoeuvreActive = this.data.filter(m => m.data.actif && m.data.nbUtilisationsMax > 0);
+
+    if(manoeuvreActive.length > this.nbCartes) {
+      ui.notifications.error(`Vous avez trop de manoeuvre dans votre main.`);
+      return;
+    }
 
     this.data.forEach((manoeuvre) => {
       const item = actor.items.get(manoeuvre._id);
