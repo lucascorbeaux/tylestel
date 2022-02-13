@@ -94,11 +94,11 @@ export async function executeManoeuvres(actorId, manoeuvres) {
   });
 
   if(!!attribut && !!metier) {
-    launchDice(actorId, attribut, metier);
+    await launchDice(actorId, attribut, metier);
   }
 }
 
-export function launchDice(actorId, attribut, metier) {
+export async function launchDice(actorId, attribut, metier) {
   const actor = game.actors.get(actorId);
 
   const actorData = actor.data.data;
@@ -107,7 +107,8 @@ export function launchDice(actorId, attribut, metier) {
 
   const rollFormula = `1d6x+1d6+${attributValue}+${metierValue}`;
   const roll = new Roll(rollFormula, actorData);
-  roll.roll().toMessage({
+  const rollEvaluation = await roll.evaluate({async: true});
+  return rollEvaluation.toMessage({
       speaker: ChatMessage.getSpeaker({ actor }),
       flavor: `Attribut + Metier`,
   });
