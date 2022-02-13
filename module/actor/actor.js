@@ -8,10 +8,18 @@ export default class ActorTylestel extends Actor {
 
     if (actorData.type === "heros") {
       data.vie = this.prepareVieData(data);
+      data.malusEtat = Object.values(data.etats)
+        .filter((e) => e.actif)
+        .reduce((prev, curr) => prev + curr.malus, 0);
+      const perception = data.attributs.perception;
+      const agilite = data.attributs.agilité;
+      data.initRoll = `1d6x+1d6+${perception}+${agilite}-${data.malusEtat}`;
     }
 
     if (actorData.type === "monstres") {
       data.vie.current = this.validateMinMaxData(data.vie.current, data.vie.min, data.vie.max);
+      const corps = data.initiative;
+      data.initRoll = `${corps}`;
     }
   }
 
