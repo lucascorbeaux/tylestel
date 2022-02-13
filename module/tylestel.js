@@ -8,6 +8,7 @@ import ArmeSheet from "./item/sheet/arme.js";
 import ArmureSheet from "./item/sheet/armure.js";
 import MonstreSheet from "./actor/sheet/monstre.js";
 import ManoeuvreMonstreSheet from "./item/sheet/manoeuvre-monstre.js";
+import EquipementSheet from "./item/sheet/equipement.js";
 import { declareComponent } from "../components/index.js";
 
 Hooks.once("init", function () {
@@ -43,6 +44,11 @@ Hooks.once("init", function () {
     types: ["armure"],
     makeDefault: true,
   });
+  Items.registerSheet("tylestel", EquipementSheet, {
+    types: ["equipement"],
+    makeDefault: true,
+  });
+  ;
   Items.registerSheet("tylestel", ManoeuvreSheet, {
     types: ["actions", "reactions"],
     makeDefault: true,

@@ -54,3 +54,24 @@ export const cardCss = css`
     justify-content: space-between;
   }
 `;
+
+export const icons = css`
+  .fas {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+  }
+
+  .fa-trash::before {
+    content: "\\f1f8";
+  }
+
+  .fa-edit::before {
+    content: "\\f044";
+  }
+`;

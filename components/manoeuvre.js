@@ -1,5 +1,5 @@
 import { LitElement, css, html } from "https://unpkg.com/lit?module";
-import { buttonCss, titreCss } from "./cssCommun.js";
+import { buttonCss, titreCss, icons } from "./cssCommun.js";
 import { executeManoeuvres } from "../services/dice.js";
 
 export class Manoeuvre extends LitElement {
@@ -66,6 +66,7 @@ export class Manoeuvre extends LitElement {
       max-width: 6rem;
     }
 
+    ${icons}
     ${buttonCss}
     ${titreCss}
   `;
@@ -95,6 +96,7 @@ export class Manoeuvre extends LitElement {
 
   render() {
     return html`
+      <style></style>
       <h2>${this.titre}</h2>
       <div class="container">
         ${this.visibleData?.map((d) => this.renderManoeuvre(d))}
@@ -177,12 +179,22 @@ export class Manoeuvre extends LitElement {
           /></label>
 
           <button
+            class="edit-btn"
+            title="Editer"
+            data-manoeuvre="${manoeuvre._id}"
+            @click=${this.editItem}
+            type="button"
+          >
+            <i class="fas fa-edit"></i>
+          </button>
+          <button
             class="delete-btn"
+            title="Supprimer"
             data-manoeuvre="${manoeuvre._id}"
             @click=${this.deleteItem}
             type="button"
           >
-            Supprimer
+            <i class="fas fa-trash"></i>
           </button>
         </div>
       `;
@@ -243,6 +255,13 @@ export class Manoeuvre extends LitElement {
     const actor = game.actors.get(this.actorId);
 
     actor.deleteEmbeddedDocuments("Item", manoeuvreId);
+  }
+
+  editItem(event) {
+    const manoeuvreId = event.currentTarget.dataset.manoeuvre;
+    const actor = game.actors.get(this.actorId);
+    const item = actor.items.get(manoeuvreId);
+    item.sheet.render(true);
   }
 
   save() {

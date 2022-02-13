@@ -1,6 +1,6 @@
 import { LitElement, css, html } from "https://unpkg.com/lit?module";
 import { htmlObjectConverter } from "./converter.js";
-import { buttonCss } from "./cssCommun.js";
+import { buttonCss, cardCss, icons } from "./cssCommun.js";
 import { unsafeHTML } from "https://unpkg.com/lit-html@2.1.3/directives/unsafe-html.js?module"
 
 export class PouvoirList extends LitElement {
@@ -12,31 +12,14 @@ export class PouvoirList extends LitElement {
   };
   // Define scoped styles right with your component, in plain CSS
   static styles = css`
-    .card {
-      box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
-        rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
-      display: flex;
-      flex-direction: column;
-      padding: 0.5rem 1rem;
-    }
-    .card header {
-      text-align: center;
-      font-weight: bold;
-      font-size: 1.2em;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .card article {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .delete-btn {
-      max-width: 6rem;
+    .delete-btn,
+    .edit-btn {
+      max-width: 2rem;
     }
 
     ${buttonCss}
+    ${cardCss}
+    ${icons}
   `;
 
   constructor() {
@@ -53,14 +36,26 @@ export class PouvoirList extends LitElement {
       <section class="card">
         <header>
           <span>${pouvoir.name}</span>
-          <button
-            class="delete-btn"
-            data-manoeuvre="${pouvoir._id}"
-            @click=${this.deleteItem}
-            type="button"
-          >
-            Supprimer
-          </button>
+          <span>
+            <button
+              class="edit-btn"
+              title="Editer"
+              data-manoeuvre="${pouvoir._id}"
+              @click=${this.editItem}
+              type="button"
+            >
+              <i class="fas fa-edit"></i>
+            </button>
+            <button
+              class="delete-btn"
+              title="Supprimer"
+              data-manoeuvre="${pouvoir._id}"
+              @click=${this.deleteItem}
+              type="button"
+            >
+              <i class="fas fa-trash"></i>
+            </button>
+          </span>
         </header>
         <article>${unsafeHTML(pouvoir.data.description)}</article>
       </section>
@@ -72,6 +67,13 @@ export class PouvoirList extends LitElement {
     const actor = game.actors.get(this.actorId);
 
     actor.deleteEmbeddedDocuments("Item", manoeuvreId);
+  }
+
+  editItem(event) {
+    const manoeuvreId = event.currentTarget.dataset.manoeuvre;
+    const actor = game.actors.get(this.actorId);
+    const item = actor.items.get(manoeuvreId);
+    item.sheet.render(true);
   }
 }
 
