@@ -52,6 +52,30 @@
           "max": 15,
           "current": 15
         }
+      },
+      "etatsTemplates": {
+        "etats": {
+          "aterre": {
+            "label": "A terre",
+            "actif": false,
+            "malus": 3
+          },
+          "entrave": {
+            "label": "Entravé",
+            "actif": false,
+            "malus": 2
+          },
+          "terreur": {
+            "label": "Terreur",
+            "actif": false,
+            "malus": 2
+          },
+          "visionreduite": {
+            "label": "Vision réduite",
+            "actif": false,
+            "malus": 2
+          }
+        }
       }
     },
     "heros": {
@@ -59,7 +83,8 @@
         "attributsTemplate",
         "metiersTemplate",
         "divinitesTemplates",
-        "vieTemplates"
+        "vieTemplates",
+        "etatsTemplates"
       ],
       "destinee": {
         "min": 0,
@@ -76,7 +101,8 @@
     },
     "monstres": {
       "templates": [
-        "vieTemplates"
+        "vieTemplates",
+        "etatsTemplates"
       ],
       "tete": 0,
       "corps": 0,

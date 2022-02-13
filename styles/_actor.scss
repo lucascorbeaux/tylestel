@@ -155,6 +155,30 @@
       align-items: center;
     }
   }
+
+  ul.etats {
+    display: flex;
+    flex-direction: column;
+
+    li.etat {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0.6rem;
+
+      label {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    .subtitle {
+      font-size: 0.8rem;
+      color: #9D9D9D;
+      text-align: center;
+      margin-top: -0.4rem;
+      margin-right: 1.2rem;
+    }
+  }
 }
 
 div.destinee {
@@ -166,14 +190,14 @@ div.destinee {
     justify-content: flex-end;
 
     label {
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.3rem;
       font-family: 'Halant', serif;
       font-size: 1.2em;
     }
 
     .destinee-container  {
-      height: 3em;
-      width: 5em;
+      height: 1.8em;
+      width: 3em;
       display: flex;
       background: no-repeat center/cover url('../assets/fdp/metier.png');
       justify-content: center;
