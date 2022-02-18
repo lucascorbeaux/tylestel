@@ -32,13 +32,11 @@ export class ManoeuvreList extends LitElement {
 
   render() {
     return html`
-      <ty-heros-toolbar actorId="{{ actor.data._id }}" heros="true">
-        <button @click="${this.toogleModeSelection}">
-          ${this.modeSelection
-            ? "Votre main de manoeuvres"
-            : "Choisir les manoeuvres"}
-        </button>
-      </ty-heros-toolbar>
+      <button @click="${this.toogleModeSelection}">
+        ${this.modeSelection
+          ? "Votre main de manoeuvres"
+          : "Choisir les manoeuvres"}
+      </button>
       <manoeuvre-utilisation
         .data=${this.actions}
         .modeSelection=${this.modeSelection}
