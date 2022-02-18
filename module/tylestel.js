@@ -10,12 +10,14 @@ import MonstreSheet from "./actor/sheet/monstre.js";
 import ManoeuvreMonstreSheet from "./item/sheet/manoeuvre-monstre.js";
 import EquipementSheet from "./item/sheet/equipement.js";
 import { declareComponent } from "../components/index.js";
+import { Macro } from "./macro.js";
 
 Hooks.once("init", function () {
   console.log(`Tylestel | Initializing Tylestel System`);
   game.tylestel = {
     ActorTylestel,
-    ItemTylestel
+    ItemTylestel,
+    macros: Macro
   };
 
   CONFIG.Actor.documentClass = ActorTylestel;

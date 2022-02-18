@@ -1,4 +1,4 @@
-import { dieux } from "../../data.js";
+import { dieux, optionsDieux } from "../../data.js";
 import {
   encodeToLitObject,
   getActions,
@@ -33,6 +33,7 @@ export default class HeroSheet extends ActorSheet {
     console.log("Tylestel | Initializing player character data");
     
     sheetData.dieux = dieux;
+    sheetData.optionsDieux = optionsDieux;
     sheetData.pouvoirs = encodeToLitObject(getPouvoir(sheetData));
     sheetData.actions = encodeToLitObject(getActions(sheetData));
     sheetData.reactions = encodeToLitObject(getReactions(sheetData));

@@ -11,14 +11,23 @@
   display: flex;
   flex-direction: row;
   justify-content: stretch;
+  max-height: 100%;
 }
 .sheet.tylestel.actor .heros-headers {
   display: flex;
   gap: 1rem;
 }
 .sheet.tylestel.actor .heros-headers input[type=text] {
-  width: 20rem;
+  width: 12rem;
   border: 0;
+}
+.sheet.tylestel.actor .heros-headers input.charname {
+  width: 18rem;
+}
+.sheet.tylestel.actor .heros-headers select {
+  width: 12rem;
+  border: 0;
+  font-family: "Spectral SC", serif;
 }
 .sheet.tylestel.actor .heros-headers input[type=number] {
   text-align: center;
@@ -37,6 +46,9 @@
   border: 0;
   margin: 1rem 1.5rem 3rem;
   text-align: center;
+}
+.sheet.tylestel.actor .sidebar .wrapper {
+  flex: 1 1 100%;
 }
 .sheet.tylestel.actor .content {
   flex: 1;

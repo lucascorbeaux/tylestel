@@ -1,51 +1,8 @@
-<ty-heros-toolbar actorId="{{ actor.data._id }}" heros="true"></ty-heros-toolbar>
 {{> 'systems/tylestel/templates/part/heros-attributs.html' }}
 {{> 'systems/tylestel/templates/part/heros-metiers.html' }}
 <div class="cols">
     {{> 'systems/tylestel/templates/part/heros-divinites.html' }}
     <div class="cols-tight">
-        <div class="destinee">
-            <label>
-                Destinée
-            </label>
-            <div class="destinee-container">
-                <input
-                    type="number"
-                    name="data.destinee.current"
-                    value="{{data.data.destinee.current}}"
-                />
-            </div>
-            <label>
-                Renommée
-            </label>
-            <div class="destinee-container">
-                <input
-                    type="number"
-                    name="data.renommee.current"
-                    value="{{data.data.renommee.current}}"
-                />
-            </div>
-            <label>
-                Expérience
-            </label>
-            <div class="destinee-container">
-                <input
-                    type="number"
-                    name="data.experience"
-                    value="{{data.data.experience}}"
-                />
-            </div>
-            <label>
-                Drachmes
-            </label>
-            <div class="destinee-container">
-                <input
-                    type="number"
-                    name="data.drachmes"
-                    value="{{data.data.drachmes}}"
-                />
-            </div>
-        </div>
         <compteur-vie
             max="{{ data.data.vie.max }}"
             current="{{ data.data.vie.current }}"

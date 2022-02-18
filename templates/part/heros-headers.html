@@ -11,27 +11,32 @@
     />
 </h3>
 <h3 class="heros-headers">
-    <label>
+    <label for="race" >
         Race
     </label>
     <span>
         <input
-            name="name"
+            name="data.race"
             type="text"
             value="{{raceName}}"
             placeholder="Name"
             readonly="true"
         />
     </span>
-    <label>
+    <label for="Origine">
         Origine
     </label>
     <input
-        name="name"
+        name="data.origine"
         type="text"
-        value="{{actor.data.origine}}"
-        placeholder="Name"
+        value="{{data.data.origine}}"
     />
+    <label>
+        Dieu tutélaire
+    </label>
+    <select name="data.dieu">
+        {{selectOptions optionsDieux selected=data.data.dieu localize=false}}
+    </select>
 </h3>
 <h3 class="heros-headers">
     <label>
