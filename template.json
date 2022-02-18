@@ -98,7 +98,8 @@
       },
       "drachmes": 0,
       "experience": 0,
-      "notes": ""
+      "notes": "",
+      "origine": ""
     },
     "monstres": {
       "templates": [
@@ -117,7 +118,16 @@
     }
   },
   "Item": {
-    "types": ["actions", "reactions", "pouvoir", "armure", "arme", "equipement", "familier"],
+    "types": [
+      "actions",
+      "reactions",
+      "pouvoir",
+      "race",
+      "armure",
+      "arme",
+      "equipement",
+      "familier"
+    ],
     "templates": {
       "base": {
         "description": ""
@@ -137,6 +147,9 @@
     "pouvoir": {
       "templates": ["base"],
       "dieu": ""
+    },
+    "race": {
+      "templates": ["base"]
     },
     "actions": {
       "templates": ["base", "manoeuvres"]

@@ -45,7 +45,7 @@ Hooks.once("init", function () {
     makeDefault: true,
   });
   Items.registerSheet("tylestel", EquipementSheet, {
-    types: ["equipement"],
+    types: ["equipement", "race"],
     makeDefault: true,
   });
   ;
