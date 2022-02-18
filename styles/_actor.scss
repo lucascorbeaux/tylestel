@@ -20,8 +20,18 @@
     gap: 1rem;
 
     input[type=text] {
-      width: 20rem;
+      width: 12rem;
       border: 0;
+    }
+
+    input.charname {
+      width: 18rem;
+    }
+
+    select {
+      width: 12rem;
+      border: 0;
+      font-family: "Spectral SC", serif;
     }
 
     input[type=number] {

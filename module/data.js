@@ -25,6 +25,16 @@ export const attributs = {
     charisme: "Charisme"
 };
 
+export const optionsDieux = {
+  av: 'Av',
+  blis: 'Blis',
+  bromos: 'Bromos',
+  irs: 'Irs',
+  nerven: 'Nerven',
+  our: 'Our',
+  pso: 'Pso'
+}
+
 export const dieux = {
   av: {
     description: "Nature, Guérison",

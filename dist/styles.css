@@ -17,8 +17,16 @@
   gap: 1rem;
 }
 .sheet.tylestel.actor .heros-headers input[type=text] {
-  width: 20rem;
+  width: 12rem;
   border: 0;
+}
+.sheet.tylestel.actor .heros-headers input.charname {
+  width: 18rem;
+}
+.sheet.tylestel.actor .heros-headers select {
+  width: 12rem;
+  border: 0;
+  font-family: "Spectral SC", serif;
 }
 .sheet.tylestel.actor .heros-headers input[type=number] {
   text-align: center;
