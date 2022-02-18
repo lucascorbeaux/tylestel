@@ -55,6 +55,7 @@
   display: flex;
   flex-direction: column;
   padding-top: 8px;
+  max-height: 100%;
 }
 .sheet.tylestel.actor .content > header {
   width: 100%;
@@ -67,14 +68,17 @@
   height: 100%;
 }
 .sheet.tylestel.actor .tabs {
-  overflow: hidden;
+  padding: 0;
 }
 .sheet.tylestel.actor .tabs h2 {
   font-size: 1.1rem;
+  border: 0;
+  padding: 0;
 }
 .sheet.tylestel.actor .tabs .item {
   height: 32px;
   border: 0;
+  padding: 0;
 }
 .sheet.tylestel.actor .tabs .item.active {
   text-shadow: none;
