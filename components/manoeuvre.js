@@ -8,7 +8,7 @@ export class Manoeuvre extends LitElement {
     titre: { type: String },
     modeSelection: { type: Boolean },
     data: { type: Object },
-    nbCartes: { type: Number }
+    nbCartes: { type: Number },
   };
   // Define scoped styles right with your component, in plain CSS
   static styles = css`
@@ -25,6 +25,7 @@ export class Manoeuvre extends LitElement {
       display: flex;
       flex-direction: column;
       padding: 0.5rem 1rem;
+      background-color: white;
     }
 
     article {
@@ -268,9 +269,11 @@ export class Manoeuvre extends LitElement {
   save() {
     const actor = game.actors.get(this.actorId);
 
-    const manoeuvreActive = this.data.filter(m => m.data.actif && m.data.nbUtilisationsMax > 0);
+    const manoeuvreActive = this.data.filter(
+      (m) => m.data.actif && m.data.nbUtilisationsMax > 0
+    );
 
-    if(manoeuvreActive.length > this.nbCartes) {
+    if (manoeuvreActive.length > this.nbCartes) {
       ui.notifications.error(`Vous avez trop de manoeuvre dans votre main.`);
       return;
     }

@@ -7,6 +7,7 @@ import { declarePouvoirList } from "./pouvoir-list.js";
 import { declareArmeList } from "./items/arme-list.js";
 import { declareArmureList } from "./items/armure-list.js";
 import { declareManoeuvreMonstre } from "./manoeuvre-monstre.js";
+import { declareCapaciteRaciale } from "./capa-raciale.js";
 
 export function declareComponent() {
   declarePopover();
@@ -18,4 +19,5 @@ export function declareComponent() {
   declareArmeList();
   declareArmureList();
   declareManoeuvreMonstre();
+  declareCapaciteRaciale();
 }

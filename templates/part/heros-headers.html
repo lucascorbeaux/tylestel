@@ -1,16 +1,70 @@
-<img
-    class="profile-img"
-    src="{{actor.img}}"
-    data-edit="img"
-    title="{{actor.name}}"
-    height="100"
-    width="100"
-/>
-<div class="header-fields">
-    <h1 class="charname"><input
+<h3 class="heros-headers">
+    <label>
+        Nom
+    </label>
+    <input
+        class="charname"
+        name="name"
+        type="text"
+        value="{{actor.name}}"
+        placeholder="Name"
+    />
+</h3>
+<h3 class="heros-headers">
+    <label>
+        Race
+    </label>
+    <span>
+        <input
             name="name"
             type="text"
-            value="{{actor.name}}"
+            value="{{raceName}}"
             placeholder="Name"
-        /></h1>
-</div>
+            readonly="true"
+        />
+    </span>
+    <label>
+        Origine
+    </label>
+    <input
+        name="name"
+        type="text"
+        value="{{actor.data.origine}}"
+        placeholder="Name"
+    />
+</h3>
+<h3 class="heros-headers">
+    <label>
+        Destinée
+    </label>
+    <input
+        type="number"
+        name="data.destinee.current"
+        value="{{data.data.destinee.current}}"
+    />
+    <label>
+        Renommée
+    </label>
+    <input
+        type="number"
+        name="data.renommee.current"
+        value="{{data.data.renommee.current}}"
+    />
+    <label>
+        Expérience
+    </label>
+    <input
+        type="number"
+        name="data.experience"
+        value="{{data.data.experience}}"
+    />
+    <label>
+        Drachmes
+    </label>
+    <input
+        type="number"
+        name="data.drachmes"
+        value="{{data.data.drachmes}}"
+    />
+</h3>
+            

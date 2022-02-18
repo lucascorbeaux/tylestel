@@ -1,4 +1,4 @@
 export const htmlObjectConverter = {
-  fromAttribute: (value) => JSON.parse(decodeURIComponent(value)),
-  toAttribute: (value) => encodeURIComponent(JSON.stringify(value)),
+  fromAttribute: (value) => value ? JSON.parse(decodeURIComponent(value)) : null,
+  toAttribute: (value) => value ? encodeURIComponent(JSON.stringify(value)) : null,
 };

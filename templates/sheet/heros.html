@@ -1,73 +1,90 @@
 <form
-    class="{{cssClass}}"
+    class="{{cssClass}} mainForm"
     autocomplete="off"
 >
-    {{!-- Sheet Header --}}
-    <header class="sheet-header">
-        {{> 'systems/tylestel/templates/part/heros-headers.html' }}
-    </header>
 
-    {{!-- Sheet Tab Navigation --}}
-    <nav
-        class="sheet-tabs tabs"
-        data-group="primary"
-    >
-        <a
-            class="item"
-            data-tab="main"
-        >
-            <h2>Caractéristiques</h2>
-        </a>
-        <a
-            class="item"
-            data-tab="combat"
-        >
-            <h2>Combats</h2>
-        </a>
-        <a
-            class="item"
-            data-tab="equipement"
-        >
-            <h2>Pouvoirs/Equipements</h2>
-        </a>
-        <a
-            class="item"
-            data-tab="notes"
-        >
-            <h2>Notes</h2>
-        </a>
-    </nav>
+    <section class="sidebar">
+        <h2>{{actor.name}}</h2>
 
-
-    {{!-- Sheet Body --}}
-    <section class="sheet-body">
-        <div
-            class="tab"
-            data-group="primary"
-            data-tab="main"
-        >
-            {{> 'systems/tylestel/templates/part/heros-tab-main.html' }}
-        </div>
-        <div
-            class="tab"
-            data-group="primary"
-            data-tab="combat"
-        >
-            {{> 'systems/tylestel/templates/part/heros-tab-combat.html' }}
-        </div>
-        <div
-            class="tab"
-            data-group="primary"
-            data-tab="equipement"
-        >
-            {{> 'systems/tylestel/templates/part/heros-tab-equipement.html' }}
-        </div>
-        <div
-            class="tab"
-            data-group="primary"
-            data-tab="notes"
-        >
-            {{editor content=data.data.notes target="data.notes" button=true owner=owner editable=editable}}
-        </div>
+        <img
+            class="profile-img"
+            src="{{actor.img}}"
+            data-edit="img"
+            title="{{actor.name}}"
+            height="160"
+            width="160"
+        />
     </section>
+
+    <section class="content">
+        {{!-- Sheet Header --}}
+        <header class="sheet-header">
+            {{> 'systems/tylestel/templates/part/heros-headers.html' }}
+        </header>
+
+        {{!-- Sheet Tab Navigation --}}
+        <nav
+            class="sheet-tabs tabs"
+            data-group="primary"
+        >
+            <a
+                class="item"
+                data-tab="main"
+            >
+                <h2>Caractéristiques</h2>
+            </a>
+            <a
+                class="item"
+                data-tab="combat"
+            >
+                <h2>Combats</h2>
+            </a>
+            <a
+                class="item"
+                data-tab="equipement"
+            >
+                <h2>Pouvoirs/Equipements</h2>
+            </a>
+            <a
+                class="item"
+                data-tab="notes"
+            >
+                <h2>Notes</h2>
+            </a>
+        </nav>
+
+
+        {{!-- Sheet Body --}}
+        <section class="sheet-body">
+            <div
+                class="tab"
+                data-group="primary"
+                data-tab="main"
+            >
+                {{> 'systems/tylestel/templates/part/heros-tab-main.html' }}
+            </div>
+            <div
+                class="tab"
+                data-group="primary"
+                data-tab="combat"
+            >
+                {{> 'systems/tylestel/templates/part/heros-tab-combat.html' }}
+            </div>
+            <div
+                class="tab"
+                data-group="primary"
+                data-tab="equipement"
+            >
+                {{> 'systems/tylestel/templates/part/heros-tab-equipement.html' }}
+            </div>
+            <div
+                class="tab"
+                data-group="primary"
+                data-tab="notes"
+            >
+                {{editor content=data.data.notes target="data.notes" button=true owner=owner editable=editable}}
+            </div>
+        </section>
+    </section>
+
 </form>

@@ -40,7 +40,9 @@ export const cardCss = css`
     display: flex;
     flex-direction: column;
     padding: 0.5rem 1rem;
+    background-color: white;
   }
+  
   .card header {
     text-align: center;
     font-weight: bold;

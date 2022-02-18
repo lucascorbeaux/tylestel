@@ -28,6 +28,13 @@
       "path": "pack/reactions.db",
       "module": "tylestel",
       "entity": "Item"
+    },
+    {
+      "name": "races",
+      "label": "Tylestel - Les races",
+      "path": "pack/races.db",
+      "module": "tylestel",
+      "entity": "Item"
     }
   ]
 }
