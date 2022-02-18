@@ -35,6 +35,13 @@
       "path": "pack/races.db",
       "module": "tylestel",
       "entity": "Item"
+    },
+    {
+      "name": "macros",
+      "label": "Tylestel - Macros",
+      "path": "pack/macros.db",
+      "module": "tylestel",
+      "entity": "Macro"
     }
   ]
 }
