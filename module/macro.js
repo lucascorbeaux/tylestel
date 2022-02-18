@@ -42,7 +42,7 @@ export class Macro {
     openDialog("Effectuer une action", "choix-test", actor, (data) => {
       const attribut = data.attribut.value;
       const metier = data.metier.value;
-      launchDice(actor._id, attribut, metier);
+      launchDice(actor.data._id, attribut, metier);
     });
   };
 
