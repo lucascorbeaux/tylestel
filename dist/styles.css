@@ -79,6 +79,7 @@
   height: 32px;
   border: 0;
   padding: 0;
+  flex: 1;
 }
 .sheet.tylestel.actor .tabs .item.active {
   text-shadow: none;
