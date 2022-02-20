@@ -31,6 +31,12 @@ export default class ActorTylestel extends Actor {
     }
   }
 
+  /** @inheritdoc */
+  async _preCreate(data, options, user) {
+    await super._preCreate(data, options, user);
+    this.data.token.update({ vision: true, actorLink: true, disposition: 1 });
+  }
+
   validateMinMaxData(value, min, max) {
     if (parseInt(value) > parseInt(max)) {
       return max;
@@ -65,14 +71,16 @@ export default class ActorTylestel extends Actor {
   }
 
   calculModificateurInitiative() {
-    return getItems(this.data, "arme")
-      .filter((a) => a.data.data.equipe)
-      .map((a) => a.data.data.initiative)
-      .reduce((prev, curr) => {
-        if(!prev) {
-          return curr;
-        }
-        return Math.min(prev, curr);
-      }, null) || 0;
+    return (
+      getItems(this.data, "arme")
+        .filter((a) => a.data.data.equipe)
+        .map((a) => a.data.data.initiative)
+        .reduce((prev, curr) => {
+          if (!prev) {
+            return curr;
+          }
+          return Math.min(prev, curr);
+        }, null) || 0
+    );
   }
 }
