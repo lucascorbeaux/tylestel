@@ -37,6 +37,13 @@
       "entity": "Item"
     },
     {
+      "name": "armes",
+      "label": "Tylestel - Armes et Armures",
+      "path": "pack/armes.db",
+      "module": "tylestel",
+      "entity": "Item"
+    },
+    {
       "name": "macros",
       "label": "Tylestel - Macros",
       "path": "pack/macros.db",
