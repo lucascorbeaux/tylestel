@@ -14,6 +14,7 @@ export const preloadHandlebarsTemplates = async function () {
     "part/heros-attributs.html",
     "part/heros-metiers.html",
     "part/heros-divinites.html",
+    "part/monstres-headers.html",
     "part/metier-value.html",
     "part/attribut-value.html",
     "part/dieu-value.html",
@@ -22,7 +23,7 @@ export const preloadHandlebarsTemplates = async function () {
     "part/select-metier.html",
     "dialog/number-dialog.html",
     "dialog/choix-test.html",
-    "dialog/choix-attribut.html"
+    "dialog/choix-attribut.html",
   ];
 
   const templatesPath = templates.map((t) => `${basePath}/${t}`);

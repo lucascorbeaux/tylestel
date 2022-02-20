@@ -76,4 +76,20 @@ export const icons = css`
   .fa-edit::before {
     content: "\\f044";
   }
+
+  .fa-hand-back-fist::before {
+    content: "\\f255";
+  }
+
+  .fa-hand-back-fist::before {
+    content: "\\f255";
+  }
+
+  .fa-suitcase::before {
+    content: "\\f0f2";
+  }
+
+  .fa-shirt::before {
+    content: "\\f553";
+  }
 `;

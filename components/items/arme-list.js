@@ -12,8 +12,10 @@ export class ArmeList extends LitElement {
   };
   // Define scoped styles right with your component, in plain CSS
   static styles = css`
-    .delete-btn, .edit-btn {
-      max-width: 2rem;
+    .delete-btn,
+    .edit-btn {
+      width: 1.4rem;
+      font-size: 1rem;
     }
 
     ${buttonCss}
@@ -46,6 +48,7 @@ export class ArmeList extends LitElement {
         <header>
           <span>${arme.name}</span>
           <span>
+            ${this.renderEtat(arme)}
             <button
               class="edit-btn"
               title="Editer"
@@ -79,6 +82,33 @@ export class ArmeList extends LitElement {
     `;
   }
 
+  renderEtat(arme) {
+    if (arme.data.equipe) {
+      return html`
+        <button
+          class="edit-btn"
+          title="En main"
+          data-manoeuvre="${arme._id}"
+          @click=${this.toogleEtatItem}
+          type="button"
+        >
+          <i class="fas fa-hand-back-fist"></i>
+        </button>
+      `;
+    }
+    return html`
+      <button
+        class="edit-btn"
+        title="Dans le sac"
+        data-manoeuvre="${arme._id}"
+        @click=${this.toogleEtatItem}
+        type="button"
+      >
+        <i class="fas fa-suitcase"></i>
+      </button>
+    `;
+  }
+
   deleteItem(event) {
     const manoeuvreId = event.currentTarget.dataset.manoeuvre;
     const actor = game.actors.get(this.actorId);
@@ -91,6 +121,17 @@ export class ArmeList extends LitElement {
     const actor = game.actors.get(this.actorId);
     const item = actor.items.get(manoeuvreId);
     item.sheet.render(true);
+  }
+
+  toogleEtatItem(event) {
+    const manoeuvreId = event.currentTarget.dataset.manoeuvre;
+    const actor = game.actors.get(this.actorId);
+    const item = actor.items.get(manoeuvreId);
+    item.update({
+      data: {
+        equipe: !item.data.data.equipe,
+      },
+    });
   }
 }
 
