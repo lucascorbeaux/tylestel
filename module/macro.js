@@ -10,12 +10,21 @@ export class Macro {
       const nbDommage = data.numField.value;
       if (!nbDommage || nbDommage <= 0) {
         ui.notifications.error(`Le nombre de dommage doit être positif`);
+        return;
       }
+
+      const valeurArmure = actor.data.data.valeurArmure;
+
+      if(valeurArmure >= nbDommage) {
+        ui.notifications.succes('Votre armure encaisse tous les dommages');
+        return;
+      }
+
       const currentVieRessource = actor.data.data.vie;
 
       updateActorData(actor, "vie", {
         ...currentVieRessource,
-        current: currentVieRessource.current - Number(nbDommage),
+        current: currentVieRessource.current - Number(nbDommage) + valeurArmure,
       });
     });
   };
@@ -42,7 +51,7 @@ export class Macro {
     openDialog("Effectuer une action", "choix-test", actor, (data) => {
       const attribut = data.attribut.value;
       const metier = data.metier.value;
-      launchDice(actor._id, attribut, metier);
+      launchDice(actor.data._id, attribut, metier);
     });
   };
 

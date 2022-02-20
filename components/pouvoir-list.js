@@ -14,7 +14,8 @@ export class PouvoirList extends LitElement {
   static styles = css`
     .delete-btn,
     .edit-btn {
-      max-width: 2rem;
+      width: 1.4rem;
+      font-size: 1rem;
     }
 
     ${buttonCss}
