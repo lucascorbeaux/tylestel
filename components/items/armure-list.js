@@ -14,7 +14,8 @@ export class ArmureList extends LitElement {
   static styles = css`
     .delete-btn,
     .edit-btn {
-      max-width: 2rem;
+      width: 1.4rem;
+      font-size: 1rem;
     }
 
     ${buttonCss}
@@ -47,6 +48,7 @@ export class ArmureList extends LitElement {
         <header>
           <span>${item.name}</span>
           <span>
+            ${this.renderEtat(item)}
             <button
               class="edit-btn"
               title="Editer"
@@ -77,6 +79,33 @@ export class ArmureList extends LitElement {
     `;
   }
 
+  renderEtat(item) {
+    if (item.data.equipe) {
+      return html`
+        <button
+          class="edit-btn"
+          title="Equipée"
+          data-manoeuvre="${item._id}"
+          @click=${this.toogleEtatItem}
+          type="button"
+        >
+          <i class="fas fa-shirt"></i>
+        </button>
+      `;
+    }
+    return html`
+      <button
+        class="edit-btn"
+        title="Dans le sac"
+        data-manoeuvre="${item._id}"
+        @click=${this.toogleEtatItem}
+        type="button"
+      >
+        <i class="fas fa-suitcase"></i>
+      </button>
+    `;
+  }
+
   deleteItem(event) {
     const manoeuvreId = event.currentTarget.dataset.manoeuvre;
     const actor = game.actors.get(this.actorId);
@@ -89,6 +118,17 @@ export class ArmureList extends LitElement {
     const actor = game.actors.get(this.actorId);
     const item = actor.items.get(manoeuvreId);
     item.sheet.render(true);
+  }
+
+  toogleEtatItem(event) {
+    const manoeuvreId = event.currentTarget.dataset.manoeuvre;
+    const actor = game.actors.get(this.actorId);
+    const item = actor.items.get(manoeuvreId);
+    item.update({
+      data: {
+        equipe: !item.data.data.equipe,
+      },
+    });
   }
 }
 

@@ -164,12 +164,14 @@
       "initiative": 0,
       "encaissement": 0,
       "portee": "",
-      "actif": true
+      "actif": true,
+      "equipe": true
     },
     "armure": {
       "templates": ["base"],
       "resistance": 0,
-      "actif": true
+      "actif": true,
+      "equipe": true
     },
     "equipement": {
       "templates": ["base"]
