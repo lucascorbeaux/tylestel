@@ -97,11 +97,15 @@ export const icons = css`
     content: "\\f553";
   }
 
+  .fa-file-plus::before {
+    content: "\\f319";
+  }
+
   .fa-plus::before {
     content: "\\2b";
   }
 
   .fa-minus::before {
-    content: "\\f068";
+    content: "-";
   }
 `;
