@@ -96,4 +96,12 @@ export const icons = css`
   .fa-shirt::before {
     content: "\\f553";
   }
+
+  .fa-plus::before {
+    content: "\\2b";
+  }
+
+  .fa-minus::before {
+    content: "\\f068";
+  }
 `;

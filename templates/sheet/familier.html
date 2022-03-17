@@ -1,0 +1,49 @@
+<form
+    class="{{cssClass}}"
+    autocomplete="off"
+>
+
+    {{!-- Sheet Header --}}
+    <header class="sheet-header">
+        {{> 'systems/tylestel/templates/part/item-headers.html' }}
+    </header>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        <div class="form-group">
+            <label>
+                Type
+            </label>
+            <input
+                type="string"
+                name="data.type"
+                value="{{ data.data.type }}"
+            />
+        </div>
+
+        <div class="form-group">
+            <label>
+                Points de familier
+            </label>
+            <input
+                type="number"
+                name="data.points.max"
+                value="{{ data.data.points.max }}"
+            />
+        </div>
+
+        <div class="form-group form-editor">
+            <label>
+                Aide à l'attaque
+            </label>
+            {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable}}
+        </div>
+
+        <div class="form-group form-editor">
+            <label>
+                Actions
+            </label>
+            {{editor content=data.data.actions target="data.actions" button=true owner=owner editable=editable}}
+        </div>
+    </section>
+</form>

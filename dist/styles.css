@@ -327,6 +327,13 @@ div.destinee .destinee-container input {
   display: flex;
   align-items: center;
 }
+.sheet.tylestel .form-editor {
+  min-height: 6em;
+  margin-bottom: 2rem;
+}
+.sheet.tylestel .form-editor .editor {
+  min-height: 4em;
+}
 .sheet.tylestel .cols, .sheet.tylestel .cols-tight {
   display: flex;
   gap: 2em;

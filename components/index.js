@@ -10,6 +10,7 @@ import { declareManoeuvreMonstre } from "./manoeuvre-monstre.js";
 import { declareCapaciteRaciale } from "./capa-raciale.js";
 import { declareCompositionSort } from './magie/composition-sort.js';
 import { declareTermeChoix } from './magie/terme-choix.js';
+import { declareFamilierList } from "./items/familier-list.js";
 
 export function declareComponent() {
   declarePopover();
@@ -24,4 +25,5 @@ export function declareComponent() {
   declareCapaciteRaciale();
   declareTermeChoix();
   declareCompositionSort();
+  declareFamilierList();
 }

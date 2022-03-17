@@ -42,6 +42,15 @@
     align-items: center;
   }
 
+  .form-editor {
+    min-height: 6em;
+    margin-bottom: 2rem;
+
+    .editor {
+      min-height: 4em;
+    }
+  }
+
   .cols, .cols-tight {
     display: flex;
     gap: 2em;

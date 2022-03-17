@@ -9,6 +9,7 @@ import ArmureSheet from "./item/sheet/armure.js";
 import MonstreSheet from "./actor/sheet/monstre.js";
 import ManoeuvreMonstreSheet from "./item/sheet/manoeuvre-monstre.js";
 import EquipementSheet from "./item/sheet/equipement.js";
+import FamilierSheet from "./item/sheet/familier.js";
 import { declareComponent } from "../components/index.js";
 import { Macro } from "./macro.js";
 
@@ -57,6 +58,9 @@ Hooks.once("init", function () {
   });
   Items.registerSheet("tylestel", ManoeuvreMonstreSheet, {
     types: ["actions", "reactions"]
+  });
+  Items.registerSheet("tylestel", FamilierSheet, {
+    types: ["familier"]
   });
 
   Handlebars.registerHelper("contains", function (needle, haystack, options) {
