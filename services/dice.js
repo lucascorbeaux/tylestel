@@ -65,7 +65,7 @@ export async function executeManoeuvres(actorId, manoeuvres) {
   const actor = game.actors.get(actorId);
 
   const attribut = await determinerAttribut(manoeuvres);
-  const metier = await determinerMetier(manoeuvres);
+  const metier = await determinerMetier(manoeuvres, actor);
 
   if((!attribut || !metier) && manoeuvres[0].data.attribut) {
     ui.notifications.error(`Les manoeuvres sont incompatibles.`);
@@ -142,9 +142,9 @@ export async function determinerAttribut(manoeuvres) {
   return openDialogChoix('Choix de l\'attribut', {possible: attributsPossible, fieldName: 'Attribut'});
 }
 
-export async function determinerMetier(manoeuvres) {
-  const metiersPossibleParManoeuvre = manoeuvres.map(
-    (m) => (m.data.metier === "variable" ? metiers : m.data.metier.split("/"))
+export async function determinerMetier(manoeuvres, actor) {
+  const metiersPossibleParManoeuvre = manoeuvres.map((m) =>
+    m.data.metier === "variable" ? metiers : m.data.metier.split("/")
   );
   const metiersPossibles = metiersPossibleParManoeuvre.reduce(
     (prev, current) => {
@@ -171,10 +171,7 @@ export async function determinerMetier(manoeuvres) {
   }
 
   if (metier === "kardia") {
-    return openDialogChoix("Choix de la magie", {
-      possible: magies,
-      fieldName: "Magie",
-    });
+    metier = await openDialogMagie("Choix du metier", actor);
   }
 
   return metier;
@@ -187,7 +184,7 @@ export function intersect(array1, array2) {
 async function openDialogChoix(title, data) {
   const urlTemplate = `systems/tylestel/templates/dialog/choix-attribut.html`;
   const content = await renderTemplate(urlTemplate, data);
-
+  
   return new Promise((resolve) => {
     new Dialog({
       title,
@@ -205,5 +202,43 @@ async function openDialogChoix(title, data) {
         resolve();
       },
     }).render(true);
+  });
+}
+
+async function openDialogMagie(title, actor) {
+  const urlTemplate = `systems/tylestel/templates/dialog/magie.html`;
+  const content = await renderTemplate(urlTemplate);
+
+  return new Promise((resolve) => {
+    new Dialog(
+      {
+        title,
+        content,
+        buttons: {
+          std: {
+            label: "Valider",
+            callback: (html) => {
+              const dialogData = html[0].querySelector("form");
+              const magie = dialogData[0].value;
+              const metier = magie.kardia;
+              const descriptif = magie.descriptif;
+              ChatMessage.create(
+                {
+                  content: descriptif,
+                  speaker: ChatMessage.getSpeaker({ actor }),
+                  flavor: name,
+                },
+                {}
+              );
+              resolve(metier);
+            },
+          },
+        },
+        close: (html) => {
+          resolve();
+        },
+      },
+      { height: 640, width: 800 }
+    ).render(true);
   });
 }

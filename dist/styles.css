@@ -354,4 +354,8 @@ div.destinee .destinee-container input {
   flex: 1 1 100%;
 }
 
+.window-content .dialog-buttons {
+  flex: 0;
+}
+
 /*# sourceMappingURL=styles.css.map */

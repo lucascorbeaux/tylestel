@@ -15,8 +15,8 @@ export class Macro {
 
       const valeurArmure = actor.data.data.valeurArmure;
 
-      if(valeurArmure >= nbDommage) {
-        ui.notifications.succes('Votre armure encaisse tous les dommages');
+      if (valeurArmure >= nbDommage) {
+        ui.notifications.succes("Votre armure encaisse tous les dommages");
         return;
       }
 
@@ -55,13 +55,29 @@ export class Macro {
     });
   };
 
+  static makeMagic = function (actor) {
+    openDialog("Lancer un sort", "magie", actor, (data) => {
+      const magie = data[0].value;
+      const attribut = "volonté";
+      const metier = magie.kardia;
+      const descriptif = magie.descriptif;
+      ChatMessage.create(
+        {
+          content: descriptif,
+          speaker: ChatMessage.getSpeaker({ actor }),
+          flavor: name,
+        },
+        {}
+      );
+      launchDice(actor.data._id, attribut, metier);
+    }, { height: 640, width: 800});
+  };
+
   static getSpeakersActor = function () {
     // Vérifie qu'un seul token est sélectionné
     const tokens = canvas.tokens.controlled;
     if (tokens.length > 1) {
-      ui.notifications.warn(
-        'Vous avez sélectionné plusieurs tokens'
-      );
+      ui.notifications.warn("Vous avez sélectionné plusieurs tokens");
       return null;
     }
 
@@ -76,27 +92,30 @@ export class Macro {
 }
 
 
-export async function openDialog(title, template, actor, callback) {
+export async function openDialog(title, template, actor, callback, options) {
   const urlTemplate = `systems/tylestel/templates/dialog/${template}.html`;
   const content = await renderTemplate(urlTemplate, { actor });
 
   return new Promise((resolve) => {
-    new Dialog({
-      title,
-      content,
-      buttons: {
-        std: {
-          label: "Valider",
-          callback: (html) => {
-            const dialogData = html[0].querySelector("form");
-            callback(dialogData);
+    new Dialog(
+      {
+        title,
+        content,
+        buttons: {
+          std: {
+            label: "Valider",
+            callback: (html) => {
+              const dialogData = html[0].querySelector("form");
+              callback(dialogData);
+            },
           },
         },
+        close: (html) => {
+          resolve();
+        },
       },
-      close: (html) => {
-        resolve();
-      },
-    }).render(true);
+      options
+    ).render(true);
   });
 }
 

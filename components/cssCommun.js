@@ -31,6 +31,10 @@ export const buttonCss = css`
   button:hover {
     background-color: rgba(255, 220, 180, 0.9);
   }
+
+  button.active {
+    background-color: rgba(255, 220, 180, 0.7);
+  }
 `;
 
 export const cardCss = css`

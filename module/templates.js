@@ -24,6 +24,7 @@ export const preloadHandlebarsTemplates = async function () {
     "dialog/number-dialog.html",
     "dialog/choix-test.html",
     "dialog/choix-attribut.html",
+    "dialog/magie.html",
   ];
 
   const templatesPath = templates.map((t) => `${basePath}/${t}`);

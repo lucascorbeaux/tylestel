@@ -10,8 +10,9 @@ export class HerosToolbar extends LitElement {
   // Define scoped styles right with your component, in plain CSS
   static styles = css`
     :host {
+      max-width: 100%;
       display: flex;
-      gap: 1rem;
+      gap: 0.2rem;
       justify-content: space-between;
       margin-bottom: 1rem;
     }
@@ -20,7 +21,8 @@ export class HerosToolbar extends LitElement {
 
     button {
       padding: 0;
-      height: 48px;
+      height: 44px;
+      flex: 1 1 100%;
     }
 
     button:hover {
@@ -28,7 +30,7 @@ export class HerosToolbar extends LitElement {
     }
 
     button img {
-      max-width: 48px;
+      max-width: 44px;
     }
   `;
 
@@ -47,6 +49,14 @@ export class HerosToolbar extends LitElement {
             <img
               src="systems/tylestel/assets/icons/test.png"
               title="Effectuer une action"
+            />
+          </button>`
+        : ""}
+      ${this.heros
+        ? html`<button @click=${this.effectuerMagie}>
+            <img
+              src="systems/tylestel/assets/icons/magic.png"
+              title="Lancer un sort"
             />
           </button>`
         : ""}
@@ -76,6 +86,10 @@ export class HerosToolbar extends LitElement {
 
   async effectuerTest() {
     Macro.makeTest(this.actor);
+  }
+
+  async effectuerMagie() {
+    Macro.makeMagic(this.actor);
   }
 }
 

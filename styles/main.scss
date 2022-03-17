@@ -3,3 +3,9 @@
 @import 'actor';
 @import 'sheet';
 @import 'manoeuvre';
+
+.window-content {
+    .dialog-buttons {
+        flex: 0;
+    }
+}
