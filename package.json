@@ -1,6 +1,6 @@
 {
   "name": "tylestel",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "Non-official foundry module for Tylestel RPG (by La plume de Cyrano).",
   "main": "index.js",
   "scripts": {

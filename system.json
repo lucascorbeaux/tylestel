@@ -2,7 +2,7 @@
   "name": "tylestel",
   "title": "Tylestel",
   "description": "Système pour le jeu de rôle Tylestel",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "templateVersion": 2,
   "minimumCoreVersion": "9",
   "compatibleCoreVersion": "9.249",
@@ -15,7 +15,7 @@
   "gridUnits": "ft",
   "url": "https://github.com/Armaklan/tylestel",
   "manifest": "https://raw.githubusercontent.com/Armaklan/tylestel/master/system.json",
-  "download": "https://github.com/Armaklan/tylestel/archive/1.2.1.zip",
+  "download": "https://github.com/Armaklan/tylestel/archive/1.2.2.zip",
   "packs": [
     {
       "name": "actions",
