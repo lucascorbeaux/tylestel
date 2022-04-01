@@ -1,11 +1,13 @@
 import { LitElement, css, html } from "https://unpkg.com/lit?module";
 import { htmlObjectConverter } from "./converter.js";
-import { buttonCss, cardCss, icons } from "./cssCommun.js";
+import { buttonCss, cardCss, icons, titreCss } from "./cssCommun.js";
 import { unsafeHTML } from "https://unpkg.com/lit-html@2.1.3/directives/unsafe-html.js?module"
 
 export class PouvoirList extends LitElement {
   static properties = {
     actorId: { type: String },
+    title: { type: String },
+    type: { type: String },
     pouvoirs: {
       converter: htmlObjectConverter,
     },
@@ -18,6 +20,7 @@ export class PouvoirList extends LitElement {
       font-size: 1rem;
     }
 
+    ${titreCss}
     ${buttonCss}
     ${cardCss}
     ${icons}
@@ -29,7 +32,20 @@ export class PouvoirList extends LitElement {
   }
 
   render() {
-    return html` ${this.pouvoirs.map((p) => this.renderPouvoir(p))} `;
+    return html`
+      <h2>
+        ${this.title}
+        <button
+          class="add-btn"
+          title="Ajouter"
+          @click=${this.addItem}
+          type="button"
+        >
+          <i class="fas fa-plus"></i>
+        </button>
+      </h2>
+      ${this.pouvoirs.map((p) => this.renderPouvoir(p))}
+    `;
   }
 
   renderPouvoir(pouvoir) {
@@ -61,6 +77,21 @@ export class PouvoirList extends LitElement {
         <article>${unsafeHTML(pouvoir.data.description)}</article>
       </section>
     `;
+  }
+
+  async addItem() {
+    const actor = game.actors.get(this.actorId);
+
+    const items = await actor.createEmbeddedDocuments("Item", [
+      {
+        name: `${this.type}`,
+        img: `systems/tylestel/assets/icons/${this.type}.png`,
+        type: this.type,
+        data: {},
+      },
+    ]);
+
+    items[0].sheet.render(true);
   }
 
   deleteItem(event) {

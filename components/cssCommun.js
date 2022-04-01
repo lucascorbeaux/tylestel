@@ -35,6 +35,10 @@ export const buttonCss = css`
   button.active {
     background-color: rgba(255, 220, 180, 0.7);
   }
+
+  .add-btn {
+    float: right;
+  }
 `;
 
 export const cardCss = css`

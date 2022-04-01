@@ -1,6 +1,6 @@
 import { LitElement, css, html } from "https://unpkg.com/lit?module";
 import { htmlObjectConverter } from "../converter.js";
-import { buttonCss, cardCss, icons } from "../cssCommun.js";
+import { buttonCss, cardCss, icons, titreCss } from "../cssCommun.js";
 import { unsafeHTML } from "https://unpkg.com/lit-html@2.1.3/directives/unsafe-html.js?module"
 
 export class FamilierList extends LitElement {
@@ -18,6 +18,7 @@ export class FamilierList extends LitElement {
       font-size: 1rem;
     }
 
+    ${titreCss}
     ${buttonCss}
     ${cardCss}
     ${icons}
@@ -64,7 +65,20 @@ export class FamilierList extends LitElement {
   }
 
   render() {
-    return html` ${this.familiers.map((p) => this.renderFamilier(p))} `;
+    return html`
+      <h2>
+        Familiers
+        <button
+          class="add-btn"
+          title="Ajouter"
+          @click=${this.addItem}
+          type="button"
+        >
+          <i class="fas fa-plus"></i>
+        </button>
+      </h2>
+      ${this.familiers.map((p) => this.renderFamilier(p))}
+    `;
   }
 
   renderFamilier(item) {
@@ -162,6 +176,21 @@ export class FamilierList extends LitElement {
     `;
   }
 
+  async addItem() {
+    const actor = game.actors.get(this.actorId);
+
+    const items = await actor.createEmbeddedDocuments("Item", [
+      {
+        name: "Nouveau familier",
+        img: "systems/tylestel/assets/icons/familier.png",
+        type: "familier",
+        data: {},
+      },
+    ]);
+
+    items[0].sheet.render(true);
+  }
+
   addMaltraitance(event) {
     const itemId = event.currentTarget.dataset.item;
     const item = this.getItemSheet(itemId);
@@ -194,7 +223,7 @@ export class FamilierList extends LitElement {
     const itemId = event.currentTarget.dataset.item;
     const item = this.getItemSheet(itemId);
     const newValue = item.data.data.points.current + 1;
-    if(newValue > item.data.data.points.max) {
+    if (newValue > item.data.data.points.max) {
       return ui.notifications.error(`Impossible de dépasser le maximum`);
     }
     item.update({

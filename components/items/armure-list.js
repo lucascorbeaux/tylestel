@@ -1,6 +1,6 @@
 import { LitElement, css, html } from "https://unpkg.com/lit?module";
 import { htmlObjectConverter } from "../converter.js";
-import { buttonCss, cardCss, icons } from "../cssCommun.js";
+import { buttonCss, cardCss, icons, titreCss } from "../cssCommun.js";
 import { unsafeHTML } from "https://unpkg.com/lit-html@2.1.3/directives/unsafe-html.js?module"
 
 export class ArmureList extends LitElement {
@@ -18,6 +18,7 @@ export class ArmureList extends LitElement {
       font-size: 1rem;
     }
 
+    ${titreCss}
     ${buttonCss}
     ${cardCss}
     ${icons}
@@ -39,7 +40,20 @@ export class ArmureList extends LitElement {
   }
 
   render() {
-    return html` ${this.armures.map((p) => this.renderArmure(p))} `;
+    return html`
+      <h2>
+        Armures
+        <button
+          class="add-btn"
+          title="Ajouter"
+          @click=${this.addItem}
+          type="button"
+        >
+          <i class="fas fa-plus"></i>
+        </button>
+      </h2>
+      ${this.armures.map((p) => this.renderArmure(p))}
+    `;
   }
 
   renderArmure(item) {
@@ -104,6 +118,21 @@ export class ArmureList extends LitElement {
         <i class="fas fa-suitcase"></i>
       </button>
     `;
+  }
+
+  async addItem() {
+    const actor = game.actors.get(this.actorId);
+
+    const items = await actor.createEmbeddedDocuments("Item", [
+      {
+        name: "Nouvelle armure",
+        img: "systems/tylestel/assets/icons/armure.png",
+        type: "armure",
+        data: {},
+      },
+    ]);
+
+    items[0].sheet.render(true);
   }
 
   deleteItem(event) {
