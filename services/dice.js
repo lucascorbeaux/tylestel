@@ -112,7 +112,7 @@ export async function launchDice(actorId, attribut, metier) {
   const rollEvaluation = await roll.evaluate({async: true});
   return rollEvaluation.toMessage({
       speaker: ChatMessage.getSpeaker({ actor }),
-      flavor: `Attribut + Metier`,
+      flavor: `${attribut} + ${metier}`,
   });
 }
 
