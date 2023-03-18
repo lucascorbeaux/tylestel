@@ -1,12 +1,18 @@
 {
-  "name": "tylestel",
+  "id": "tylestel",
   "title": "Tylestel",
   "description": "Système pour le jeu de rôle Tylestel",
-  "version": "1.2.2",
-  "templateVersion": 2,
-  "minimumCoreVersion": "9",
-  "compatibleCoreVersion": "9.249",
-  "author": "Lionel ZUBER",
+  "version": "1.3.0",
+  "compatibility": {
+    "minimum": 10,
+    "verified": "10.291"
+  },
+  "authors": [
+    {
+      "name": "ZUBER Lionel",
+      "email": "lionel.zuber@armaklan.org"
+    }
+  ],
   "esmodules": ["module/tylestel.js"],
   "styles": ["dist/styles.css"],
   "socket": false,
@@ -15,10 +21,11 @@
   "gridUnits": "ft",
   "url": "https://github.com/Armaklan/tylestel",
   "manifest": "https://raw.githubusercontent.com/Armaklan/tylestel/master/system.json",
-  "download": "https://github.com/Armaklan/tylestel/archive/1.2.2.zip",
+  "download": "https://github.com/Armaklan/tylestel/archive/1.3.0.zip",
   "packs": [
     {
       "name": "actions",
+      "system": "tylestel",
       "label": "Tylestel - Actions",
       "path": "pack/actions.db",
       "module": "tylestel",
@@ -26,6 +33,7 @@
     },
     {
       "name": "reactions",
+      "system": "tylestel",
       "label": "Tylestel - Reactions",
       "path": "pack/reactions.db",
       "module": "tylestel",
@@ -33,6 +41,7 @@
     },
     {
       "name": "races",
+      "system": "tylestel",
       "label": "Tylestel - Les races",
       "path": "pack/races.db",
       "module": "tylestel",
@@ -40,6 +49,7 @@
     },
     {
       "name": "armes",
+      "system": "tylestel",
       "label": "Tylestel - Armes et Armures",
       "path": "pack/armes.db",
       "module": "tylestel",
@@ -47,6 +57,7 @@
     },
     {
       "name": "macros",
+      "system": "tylestel",
       "label": "Tylestel - Macros",
       "path": "pack/macros.db",
       "module": "tylestel",
