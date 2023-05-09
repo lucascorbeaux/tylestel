@@ -41,7 +41,7 @@ export async function executeManoeuvresMonstres(actorId, manoeuvres) {
 
   manoeuvres.forEach((manoeuvre) => {
     const name = manoeuvre.name;
-    const description = manoeuvre.data.description;
+    const description = manoeuvre.description;
 
     ChatMessage.create(
       {
@@ -52,10 +52,10 @@ export async function executeManoeuvresMonstres(actorId, manoeuvres) {
       {}
     );
 
-    if (manoeuvre.data.nbUtilisationsMax != -1) {
+    if (manoeuvre.system.nbUtilisationsMax != -1) {
       const item = actor.items.get(manoeuvre._id);
       item.update({
-        data: { nbUtilisationsActuel: manoeuvre.data.nbUtilisationsActuel + 1 },
+        data: { nbUtilisationsActuel: manoeuvre.system.nbUtilisationsActuel + 1 },
       });
     }
   });
@@ -67,14 +67,14 @@ export async function executeManoeuvres(actorId, manoeuvres) {
   const attribut = await determinerAttribut(manoeuvres);
   const metier = await determinerMetier(manoeuvres, actor);
 
-  if((!attribut || !metier) && manoeuvres[0].data.attribut) {
+  if ((!attribut || !metier) && manoeuvres[0].system.attribut) {
     ui.notifications.error(`Les manoeuvres sont incompatibles.`);
     return;
   }
 
   manoeuvres.forEach((manoeuvre) => {
     const name = manoeuvre.name;
-    const description = manoeuvre.data.description;
+    const description = manoeuvre.system.description;
 
     ChatMessage.create(
       {
@@ -85,15 +85,15 @@ export async function executeManoeuvres(actorId, manoeuvres) {
       {}
     );
 
-    if(manoeuvre.data.nbUtilisationsMax != -1) {
+    if (manoeuvre.system.nbUtilisationsMax != -1) {
       const item = actor.items.get(manoeuvre._id);
       item.update({
-        data: { nbUtilisationsActuel: manoeuvre.data.nbUtilisationsActuel + 1 },
+        data: { nbUtilisationsActuel: manoeuvre.system.nbUtilisationsActuel + 1 },
       });
     }
   });
 
-  if(!!attribut && !!metier) {
+  if (!!attribut && !!metier) {
     await launchDice(actorId, attribut, metier);
   }
 }
@@ -101,7 +101,7 @@ export async function executeManoeuvres(actorId, manoeuvres) {
 export async function launchDice(actorId, attribut, metier) {
   const actor = game.actors.get(actorId);
 
-  const actorData = actor.data.data;
+  const actorData = actor.system;
   const attributValue = actorData.attributs[attribut];
   const metierValue = actorData.metiers[metier];
 
@@ -109,16 +109,16 @@ export async function launchDice(actorId, attribut, metier) {
 
   const rollFormula = `1d6x+1d6+${attributValue}+${metierValue}-${malusEtat}`;
   const roll = new Roll(rollFormula, actorData);
-  const rollEvaluation = await roll.evaluate({async: true});
+  const rollEvaluation = await roll.evaluate({ async: true });
   return rollEvaluation.toMessage({
-      speaker: ChatMessage.getSpeaker({ actor }),
-      flavor: `${attribut} + ${metier}`,
+    speaker: ChatMessage.getSpeaker({ actor }),
+    flavor: `${attribut} + ${metier}`,
   });
 }
 
 
 export async function determinerAttribut(manoeuvres) {
-  const attributsPossibleParManoeuvre = manoeuvres.map((m) => m.data.attribut === 'variable' ? attributs : m.data.attribut.split("/"));
+  const attributsPossibleParManoeuvre = manoeuvres.map((m) => m.system.attribut === 'variable' ? attributs : m.system.attribut.split("/"));
   const attributsPossible = attributsPossibleParManoeuvre.reduce(
     (prev, current) => {
       if (prev === null) {
@@ -130,21 +130,21 @@ export async function determinerAttribut(manoeuvres) {
     null
   );
 
-  if(!attributsPossible.length) {
+  if (!attributsPossible.length) {
     return null;
   }
 
-  if(attributsPossible.length === 1) {
+  if (attributsPossible.length === 1) {
     return attributsPossible[0];
   }
 
   // Modale pour demander l'attributs
-  return openDialogChoix('Choix de l\'attribut', {possible: attributsPossible, fieldName: 'Attribut'});
+  return openDialogChoix('Choix de l\'attribut', { possible: attributsPossible, fieldName: 'Attribut' });
 }
 
 export async function determinerMetier(manoeuvres, actor) {
   const metiersPossibleParManoeuvre = manoeuvres.map((m) =>
-    m.data.metier === "variable" ? metiers : m.data.metier.split("/")
+    m.system.metier === "variable" ? metiers : m.system.metier.split("/")
   );
   const metiersPossibles = metiersPossibleParManoeuvre.reduce(
     (prev, current) => {
@@ -184,7 +184,7 @@ export function intersect(array1, array2) {
 async function openDialogChoix(title, data) {
   const urlTemplate = `systems/tylestel/templates/dialog/choix-attribut.html`;
   const content = await renderTemplate(urlTemplate, data);
-  
+
   return new Promise((resolve) => {
     new Dialog({
       title,

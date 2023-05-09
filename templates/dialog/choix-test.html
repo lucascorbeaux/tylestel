@@ -3,11 +3,8 @@
         <label for="roll-attribut">
             Attribut :
         </label>
-        <select
-            name="attribut"
-            id="roll-attribut"
-        >
-            {{#each actor.data.data.attributs as |attribut id|}}
+        <select name="attribut" id="roll-attribut">
+            {{#each actor.system.attributs as |attribut id|}}
             {{ id }}
             <option value="{{id}}">{{ id }}</option>
             {{/each}}
@@ -17,11 +14,8 @@
         <label for="roll-metier">
             Métier :
         </label>
-        <select
-            name="metier"
-            id="roll-metier"
-        >
-            {{#each actor.data.data.metiers as |metier id|}}
+        <select name="metier" id="roll-metier">
+            {{#each actor.system.metiers as |metier id|}}
             {{ id }}
             <option value="{{id}}">{{ id }}</option>
             {{/each}}

@@ -1,7 +1,7 @@
+import { unsafeHTML } from "https://unpkg.com/lit-html@2.1.3/directives/unsafe-html.js?module";
 import { LitElement, css, html } from "https://unpkg.com/lit?module";
 import { htmlObjectConverter } from "../converter.js";
 import { buttonCss, cardCss, icons, titreCss } from "../cssCommun.js";
-import { unsafeHTML } from "https://unpkg.com/lit-html@2.1.3/directives/unsafe-html.js?module"
 
 export class ArmureList extends LitElement {
   static properties = {
@@ -85,16 +85,16 @@ export class ArmureList extends LitElement {
         </header>
         <article>
           <div class="attribut-container">
-            <span><b>Résistance : </b> ${item.data.resistance}</span>
+            <span><b>Résistance : </b> ${item.system.resistance}</span>
           </div>
-          <div>${unsafeHTML(item.data.description)}</div>
+          <div>${unsafeHTML(item.system.description)}</div>
         </article>
       </section>
     `;
   }
 
   renderEtat(item) {
-    if (item.data.equipe) {
+    if (item.system.equipe) {
       return html`
         <button
           class="edit-btn"
@@ -155,7 +155,7 @@ export class ArmureList extends LitElement {
     const item = actor.items.get(manoeuvreId);
     item.update({
       data: {
-        equipe: !item.data.data.equipe,
+        equipe: !item.system.equipe,
       },
     });
   }

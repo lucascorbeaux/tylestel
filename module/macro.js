@@ -1,4 +1,3 @@
-import { metiers, attributs } from "./data.js";
 import { launchDice } from "../services/dice.js";
 
 export class Macro {
@@ -13,14 +12,14 @@ export class Macro {
         return;
       }
 
-      const valeurArmure = actor.data.data.valeurArmure;
+      const valeurArmure = actor.system.valeurArmure;
 
       if (valeurArmure >= nbDommage) {
         ui.notifications.succes("Votre armure encaisse tous les dommages");
         return;
       }
 
-      const currentVieRessource = actor.data.data.vie;
+      const currentVieRessource = actor.system.vie;
 
       updateActorData(actor, "vie", {
         ...currentVieRessource,
@@ -38,7 +37,7 @@ export class Macro {
       if (!nbVie || nbVie <= 0) {
         ui.notifications.error(`Le nombre de pts regagné doit être positif`);
       }
-      const currentVieRessource = actor.data.data.vie;
+      const currentVieRessource = actor.system.vie;
 
       updateActorData(actor, "vie", {
         ...currentVieRessource,
@@ -51,7 +50,7 @@ export class Macro {
     openDialog("Effectuer une action", "choix-test", actor, (data) => {
       const attribut = data.attribut.value;
       const metier = data.metier.value;
-      launchDice(actor.data._id, attribut, metier);
+      launchDice(actor._id, attribut, metier);
     });
   };
 
@@ -69,8 +68,8 @@ export class Macro {
         },
         {}
       );
-      launchDice(actor.data._id, attribut, metier);
-    }, { height: 640, width: 800});
+      launchDice(actor._id, attribut, metier);
+    }, { height: 640, width: 800 });
   };
 
   static getSpeakersActor = function () {
@@ -121,7 +120,7 @@ export async function openDialog(title, template, actor, callback, options) {
 
 
 export function updateActorData(actor, key, updatedProperties) {
-  const data = { data: {} };
-  data.data[key] = updatedProperties;
+  const data = { system: {} };
+  data.system[key] = updatedProperties;
   actor.update(data);
 }

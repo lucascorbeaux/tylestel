@@ -1,7 +1,7 @@
+import { unsafeHTML } from "https://unpkg.com/lit-html@2.1.3/directives/unsafe-html.js?module";
 import { LitElement, css, html } from "https://unpkg.com/lit?module";
 import { htmlObjectConverter } from "../converter.js";
 import { buttonCss, cardCss, icons, titreCss } from "../cssCommun.js";
-import { unsafeHTML } from "https://unpkg.com/lit-html@2.1.3/directives/unsafe-html.js?module"
 
 export class FamilierList extends LitElement {
   static properties = {
@@ -112,8 +112,8 @@ export class FamilierList extends LitElement {
             ${this.renderPoints(item)} ${this.renderMaltraitance(item)}
           </div>
           <div class="description-container">
-            <div>${unsafeHTML(item.data.description)}</div>
-            <div>${unsafeHTML(item.data.actions)}</div>
+            <div>${unsafeHTML(item.system.description)}</div>
+            <div>${unsafeHTML(item.system.actions)}</div>
           </div>
         </article>
       </section>
@@ -134,7 +134,7 @@ export class FamilierList extends LitElement {
           <i class="fas fa-minus"></i>
         </button>
 
-        <div>${item.data.points.current} / ${item.data.points.max}</div>
+        <div>${item.system.points.current} / ${item.system.points.max}</div>
 
         <button
           class="edit-btn"
@@ -162,7 +162,7 @@ export class FamilierList extends LitElement {
         >
           <i class="fas fa-minus"></i>
         </button>
-        <div>${item.data.maltraitance}</div>
+        <div>${item.system.maltraitance}</div>
         <button
           class="edit-btn"
           title="Ajouter"
@@ -194,7 +194,7 @@ export class FamilierList extends LitElement {
   addMaltraitance(event) {
     const itemId = event.currentTarget.dataset.item;
     const item = this.getItemSheet(itemId);
-    const newValue = item.data.data.maltraitance + 1;
+    const newValue = item.system.maltraitance + 1;
     if (newValue >= 3) {
       ui.notifications.warn(`Votre familier est maltraité.`);
     }
@@ -208,7 +208,7 @@ export class FamilierList extends LitElement {
   removeMaltraitance(event) {
     const itemId = event.currentTarget.dataset.item;
     const item = this.getItemSheet(itemId);
-    const newValue = item.data.data.maltraitance - 1;
+    const newValue = item.system.maltraitance - 1;
     if (newValue < 0) {
       return ui.notifications.error(`Impossible de diminuer en dessous de 0`);
     }
@@ -222,8 +222,8 @@ export class FamilierList extends LitElement {
   addPoints(event) {
     const itemId = event.currentTarget.dataset.item;
     const item = this.getItemSheet(itemId);
-    const newValue = item.data.data.points.current + 1;
-    if (newValue > item.data.data.points.max) {
+    const newValue = item.system.points.current + 1;
+    if (newValue > item.system.points.max) {
       return ui.notifications.error(`Impossible de dépasser le maximum`);
     }
     item.update({
@@ -236,8 +236,8 @@ export class FamilierList extends LitElement {
   removePoints(event) {
     const itemId = event.currentTarget.dataset.item;
     const item = this.getItemSheet(itemId);
-    const newValue = item.data.data.points.current - 1;
-    if (newValue < item.data.data.points.min) {
+    const newValue = item.system.points.current - 1;
+    if (newValue < item.system.points.min) {
       return ui.notifications.error(`Impossible de diminuer en dessous de 0`);
     }
     item.update({

@@ -1,17 +1,17 @@
+import { declareComponent } from "../components/index.js";
 import ActorTylestel from "./actor/actor.js";
-import ItemTylestel from "./item/item.js";
 import HeroSheet from "./actor/sheet/hero.js";
-import { preloadHandlebarsTemplates } from "./templates.js";
-import PouvoirSheet from "./item/sheet/pouvoir.js";
-import ManoeuvreSheet from "./item/sheet/manoeuvre.js";
+import MonstreSheet from "./actor/sheet/monstre.js";
+import ItemTylestel from "./item/item.js";
 import ArmeSheet from "./item/sheet/arme.js";
 import ArmureSheet from "./item/sheet/armure.js";
-import MonstreSheet from "./actor/sheet/monstre.js";
-import ManoeuvreMonstreSheet from "./item/sheet/manoeuvre-monstre.js";
 import EquipementSheet from "./item/sheet/equipement.js";
 import FamilierSheet from "./item/sheet/familier.js";
-import { declareComponent } from "../components/index.js";
+import ManoeuvreMonstreSheet from "./item/sheet/manoeuvre-monstre.js";
+import ManoeuvreSheet from "./item/sheet/manoeuvre.js";
+import PouvoirSheet from "./item/sheet/pouvoir.js";
 import { Macro } from "./macro.js";
+import { preloadHandlebarsTemplates } from "./templates.js";
 
 Hooks.once("init", function () {
   console.log(`Tylestel | Initializing Tylestel System`);
@@ -81,18 +81,18 @@ Hooks.once("init", function () {
 
 
 Hooks.on("preCreateItem", function (document, options, userId) {
-  document.data.update({
-    img: "systems/tylestel/assets/icons/" + document.data.type + ".png",
+  document.updateSource({
+    img: "systems/tylestel/assets/icons/" + document.type + ".png",
   });
 });
 
 Hooks.on("preCreateActor", function (entity, options, userId) {
-  entity.data.update({
+  entity.updateSource({
     img: "systems/tylestel/assets/icons/" + entity.type + ".png",
   })
 
   if (entity.name == "") {
-    entity.data.update({
+    entity.updateSource({
       name: "Nouveau " + entity.type[0].toUpperCase() + entity.type.slice(1),
     })
   }

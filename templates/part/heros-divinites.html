@@ -1,5 +1,5 @@
 <ul class="divinites">
-    {{#each data.data.dieux as |dieu id|}}
-        {{> 'systems/tylestel/templates/part/dieu-value.html' dieu=dieu id=id detail=(lookup ../dieux id)}}
+    {{#each data.system.dieux as |dieu id|}}
+    {{> 'systems/tylestel/templates/part/dieu-value.html' dieu=dieu id=id detail=(lookup ../dieux id)}}
     {{/each}}
 </ul>

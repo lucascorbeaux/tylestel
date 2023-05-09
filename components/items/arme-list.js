@@ -1,7 +1,7 @@
+import { unsafeHTML } from "https://unpkg.com/lit-html@2.1.3/directives/unsafe-html.js?module";
 import { LitElement, css, html } from "https://unpkg.com/lit?module";
 import { htmlObjectConverter } from "../converter.js";
 import { buttonCss, cardCss, icons, titreCss } from "../cssCommun.js";
-import { unsafeHTML } from "https://unpkg.com/lit-html@2.1.3/directives/unsafe-html.js?module"
 
 export class ArmeList extends LitElement {
   static properties = {
@@ -85,19 +85,19 @@ export class ArmeList extends LitElement {
         </header>
         <article>
           <div class="attribut-container">
-            <span><b>Dégâts : </b> ${arme.data.degats}</span>
-            <span><b>Initiative : </b> ${arme.data.initiative}</span>
-            <span><b>Encaissement : </b> ${arme.data.encaissement}</span>
-            <span><b>Portée : </b> ${arme.data.portee}</span>
+            <span><b>Dégâts : </b> ${arme.system.degats}</span>
+            <span><b>Initiative : </b> ${arme.system.initiative}</span>
+            <span><b>Encaissement : </b> ${arme.system.encaissement}</span>
+            <span><b>Portée : </b> ${arme.system.portee}</span>
           </div>
-          <div>${unsafeHTML(arme.data.description)}</div>
+          <div>${unsafeHTML(arme.system.description)}</div>
         </article>
       </section>
     `;
   }
 
   renderEtat(arme) {
-    if (arme.data.equipe) {
+    if (arme.system.equipe) {
       return html`
         <button
           class="edit-btn"
@@ -158,7 +158,7 @@ export class ArmeList extends LitElement {
     const item = actor.items.get(manoeuvreId);
     item.update({
       data: {
-        equipe: !item.data.data.equipe,
+        equipe: !item.system.equipe,
       },
     });
   }

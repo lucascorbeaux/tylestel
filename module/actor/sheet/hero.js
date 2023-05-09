@@ -4,9 +4,9 @@ import {
   getActions,
   getActiveActions,
   getActiveReactions,
+  getItems,
   getPouvoir,
-  getReactions,
-  getItems
+  getReactions
 } from "../../helper.js";
 
 export default class HeroSheet extends ActorSheet {
@@ -31,7 +31,7 @@ export default class HeroSheet extends ActorSheet {
   getData() {
     const sheetData = super.getData();
     console.log("Tylestel | Initializing player character data");
-    
+
     sheetData.dieux = dieux;
     sheetData.optionsDieux = optionsDieux;
     sheetData.pouvoirs = encodeToLitObject(getPouvoir(sheetData));
@@ -48,9 +48,9 @@ export default class HeroSheet extends ActorSheet {
     sheetData.race = race ? encodeToLitObject(race) : '';
     sheetData.raceName = race?.name;
 
-    sheetData.nbActions = Math.floor(sheetData.data.data.metiers.guerrier / 2) + 2;
-    sheetData.nbReactions = Math.floor(sheetData.data.data.metiers.stratégos / 2) + 1;
-    
+    sheetData.nbActions = Math.floor(sheetData.data.system.metiers.guerrier / 2) + 2;
+    sheetData.nbReactions = Math.floor(sheetData.data.system.metiers.stratégos / 2) + 1;
+
     console.debug(sheetData);
     return sheetData;
   }
@@ -59,10 +59,10 @@ export default class HeroSheet extends ActorSheet {
     if (!this.actor.isOwner) return false;
 
     const item = await Item.fromDropData(data);
-    
-    if(item.type === 'race') {
+
+    if (item.type === 'race') {
       const currentRace = this.actor.items.filter((item) => item.type === "race")[0];
-      if(currentRace) {
+      if (currentRace) {
         await this.actor.deleteEmbeddedDocuments("Item", [currentRace._id]);
         await this.actor.createEmbeddedDocuments("Item", [item.toObject(false)])
         return;

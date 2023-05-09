@@ -1,5 +1,5 @@
 <ul class="metiers">
-    {{#each data.data.metiers as |metier id|}}
+    {{#each data.system.metiers as |metier id|}}
     {{> 'systems/tylestel/templates/part/metier-value.html' metier=metier id=id }}
     {{/each}}
 </ul>

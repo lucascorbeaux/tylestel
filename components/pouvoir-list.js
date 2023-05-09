@@ -1,7 +1,7 @@
+import { unsafeHTML } from "https://unpkg.com/lit-html@2.1.3/directives/unsafe-html.js?module";
 import { LitElement, css, html } from "https://unpkg.com/lit?module";
 import { htmlObjectConverter } from "./converter.js";
 import { buttonCss, cardCss, icons, titreCss } from "./cssCommun.js";
-import { unsafeHTML } from "https://unpkg.com/lit-html@2.1.3/directives/unsafe-html.js?module"
 
 export class PouvoirList extends LitElement {
   static properties = {
@@ -74,7 +74,7 @@ export class PouvoirList extends LitElement {
             </button>
           </span>
         </header>
-        <article>${unsafeHTML(pouvoir.data.description)}</article>
+        <article>${unsafeHTML(pouvoir.system.description)}</article>
       </section>
     `;
   }

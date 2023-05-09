@@ -1,7 +1,7 @@
+import { unsafeHTML } from "https://unpkg.com/lit-html@2.1.3/directives/unsafe-html.js?module";
 import { LitElement, css, html } from "https://unpkg.com/lit?module";
 import { htmlObjectConverter } from "./converter.js";
 import { buttonCss, cardCss, icons } from "./cssCommun.js";
-import { unsafeHTML } from "https://unpkg.com/lit-html@2.1.3/directives/unsafe-html.js?module"
 
 export class CapaciteRaciale extends LitElement {
   static properties = {
@@ -26,7 +26,7 @@ export class CapaciteRaciale extends LitElement {
   }
 
   get description() {
-    return this.race?.data.description;
+    return this.race?.system?.description;
   }
 
   render() {

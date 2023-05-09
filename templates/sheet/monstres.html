@@ -1,18 +1,13 @@
-<form
-    class="{{cssClass}}"
-    autocomplete="off"
->
+<form class="{{cssClass}}" autocomplete="off">
     {{!-- Sheet Header --}}
     <header class="sheet-header">
         {{> 'systems/tylestel/templates/part/monstres-headers.html' }}
     </header>
 
     {{!-- Sheet Tab Navigation --}}
-    {{editor content=data.data.description target="data.description" button=true owner=owner editable=editable}}
+    {{editor data.system.description target="system.description" button=true owner=owner editable=editable}}
 
-    <ty-heros-toolbar
-        actorId="{{ actor.data._id }}"
-    ></ty-heros-toolbar>
+    <ty-heros-toolbar actorId="{{ actor._id }}"></ty-heros-toolbar>
 
     <ul class="attributs-monstres">
         <li class="attribut">
@@ -20,11 +15,7 @@
                 Corps
             </label>
             <div class="attribut-container">
-                <input
-                    type="number"
-                    name="data.corps"
-                    value="{{data.data.corps}}"
-                />
+                <input type="number" name="system.corps" value="{{data.system.corps}}" />
             </div>
         </li>
 
@@ -33,11 +24,7 @@
                 Tête
             </label>
             <div class="attribut-container">
-                <input
-                    type="number"
-                    name="data.tete"
-                    value="{{data.data.tete}}"
-                />
+                <input type="number" name="system.tete" value="{{data.system.tete}}" />
             </div>
         </li>
 
@@ -46,11 +33,7 @@
                 Dommages
             </label>
             <div class="attribut-container">
-                <input
-                    type="number"
-                    name="data.dommages"
-                    value="{{data.data.dommages}}"
-                />
+                <input type="number" name="system.dommages" value="{{data.system.dommages}}" />
             </div>
         </li>
 
@@ -59,11 +42,7 @@
                 Initiative
             </label>
             <div class="attribut-container">
-                <input
-                    type="number"
-                    name="data.initiative"
-                    value="{{data.data.initiative}}"
-                />
+                <input type="number" name="system.initiative" value="{{data.system.initiative}}" />
             </div>
         </li>
 
@@ -72,11 +51,7 @@
                 Tours entravés
             </label>
             <div class="attribut-container">
-                <input
-                    type="number"
-                    name="data.toursEntrave"
-                    value="{{data.data.toursEntrave}}"
-                />
+                <input type="number" name="system.toursEntrave" value="{{data.system.toursEntrave}}" />
             </div>
         </li>
 
@@ -84,11 +59,7 @@
             <label>
                 Défense
             </label>
-            <input
-                type="text"
-                name="data.defense"
-                value="{{data.data.defense}}"
-            />
+            <input type="text" name="system.defense" value="{{data.system.defense}}" />
         </li>
 
         <li class="attribut">
@@ -96,11 +67,7 @@
                 Encaissement
             </label>
             <div class="attribut-container">
-                <input
-                    type="number"
-                    name="data.encaissement"
-                    value="{{data.data.encaissement}}"
-                />
+                <input type="number" name="system.encaissement" value="{{data.system.encaissement}}" />
             </div>
         </li>
 
@@ -109,11 +76,7 @@
                 Résistance
             </label>
             <div class="attribut-container">
-                <input
-                    type="number"
-                    name="data.resistance"
-                    value="{{data.data.resistance}}"
-                />
+                <input type="number" name="system.resistance" value="{{data.system.resistance}}" />
             </div>
         </li>
 
@@ -122,32 +85,19 @@
                 Vie max
             </label>
             <div class="attribut-container">
-                <input
-                    type="number"
-                    name="data.vie.max"
-                    value="{{data.data.vie.max}}"
-                />
+                <input type="number" name="system.vie.max" value="{{data.system.vie.max}}" />
             </div>
         </li>
 
-        <compteur-vie
-            max="{{ data.data.vie.max }}"
-            current="{{ data.data.vie.current }}"
-        >
+        <compteur-vie max="{{ data.system.vie.max }}" current="{{ data.system.vie.current }}">
         </compteur-vie>
 
         <ul class="etats">
-            {{#each data.data.etats as |etat id|}}
+            {{#each data.system.etats as |etat id|}}
             <li class="etat">
                 <label>
                     {{ etat.label }}
-                    <input
-                        type="checkbox"
-                        name="data.etats.{{id}}.actif"
-                        {{checked
-                        etat.actif
-                        }}
-                    />
+                    <input type="checkbox" name="system.etats.{{id}}.actif" {{checked etat.actif }} />
                 </label>
                 <span class="subtitle">- {{ etat.malus }} aux tests</span>
             </li>
@@ -155,15 +105,7 @@
         </ul>
     </ul>
 
-    <manoeuvre-monstre
-        actorId="{{ actor.data._id }}"
-        titre="Actions"
-        data="{{actions}}"
-    ></manoeuvre-monstre>
+    <manoeuvre-monstre actorId="{{ actor._id }}" titre="Actions" data="{{actions}}"></manoeuvre-monstre>
 
-    <manoeuvre-monstre
-        actorId="{{ actor.data._id }}"
-        titre="Reactions"
-        data="{{reactions}}"
-    ></manoeuvre-monstre>
+    <manoeuvre-monstre actorId="{{ actor._id }}" titre="Reactions" data="{{reactions}}"></manoeuvre-monstre>
 </form>

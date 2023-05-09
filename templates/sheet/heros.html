@@ -1,23 +1,13 @@
-<form
-    class="{{cssClass}} mainForm"
-    autocomplete="off"
->
+<form class="{{cssClass}} mainForm" autocomplete="off">
 
     <section class="sidebar">
         <h2>{{actor.name}}</h2>
 
-        <img
-            class="profile-img"
-            src="{{actor.img}}"
-            data-edit="img"
-            title="{{actor.name}}"
-            height="160"
-            width="160"
-        />
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="160" width="160" />
 
         <div class="wrapper"></div>
 
-        <ty-heros-toolbar actorId="{{actor.data._id}}" heros="true"></ty-heros-toolbar>
+        <ty-heros-toolbar actorId="{{actor._id}}" heros="true"></ty-heros-toolbar>
     </section>
 
     <section class="content">
@@ -27,32 +17,17 @@
         </header>
 
         {{!-- Sheet Tab Navigation --}}
-        <nav
-            class="sheet-tabs tabs"
-            data-group="primary"
-        >
-            <a
-                class="item"
-                data-tab="main"
-            >
+        <nav class="sheet-tabs tabs" data-group="primary">
+            <a class="item" data-tab="main">
                 <h2>Caractéristiques</h2>
             </a>
-            <a
-                class="item"
-                data-tab="combat"
-            >
+            <a class="item" data-tab="combat">
                 <h2>Combats</h2>
             </a>
-            <a
-                class="item"
-                data-tab="equipement"
-            >
+            <a class="item" data-tab="equipement">
                 <h2>Pouvoirs/Equipements</h2>
             </a>
-            <a
-                class="item"
-                data-tab="notes"
-            >
+            <a class="item" data-tab="notes">
                 <h2>Notes</h2>
             </a>
         </nav>
@@ -60,33 +35,17 @@
 
         {{!-- Sheet Body --}}
         <section class="sheet-body">
-            <div
-                class="tab"
-                data-group="primary"
-                data-tab="main"
-            >
+            <div class="tab" data-group="primary" data-tab="main">
                 {{> 'systems/tylestel/templates/part/heros-tab-main.html' }}
             </div>
-            <div
-                class="tab"
-                data-group="primary"
-                data-tab="combat"
-            >
+            <div class="tab" data-group="primary" data-tab="combat">
                 {{> 'systems/tylestel/templates/part/heros-tab-combat.html' }}
             </div>
-            <div
-                class="tab"
-                data-group="primary"
-                data-tab="equipement"
-            >
+            <div class="tab" data-group="primary" data-tab="equipement">
                 {{> 'systems/tylestel/templates/part/heros-tab-equipement.html' }}
             </div>
-            <div
-                class="tab"
-                data-group="primary"
-                data-tab="notes"
-            >
-                {{editor content=data.data.notes target="data.notes" button=true owner=owner editable=editable}}
+            <div class="tab" data-group="primary" data-tab="notes">
+                {{editor data.system.notes target="system.notes" button=true owner=owner editable=editable}}
             </div>
         </section>
     </section>

@@ -1,7 +1,7 @@
 import { LitElement, css, html } from "https://unpkg.com/lit?module";
-import { buttonCss, titreCss } from "./cssCommun.js";
 import { executeManoeuvresMonstres } from "../services/dice.js";
 import { htmlObjectConverter } from "./converter.js";
+import { buttonCss, titreCss } from "./cssCommun.js";
 
 export class ManoeuvreMonstre extends LitElement {
   static properties = {
@@ -88,8 +88,8 @@ export class ManoeuvreMonstre extends LitElement {
   get usingManoeuvreNonEpuise() {
     return this.usingManoeuvre.filter(
       (m) =>
-        m.data.nbUtilisationsMax - m.data.nbUtilisationsActuel > 0 ||
-        m.data.nbUtilisationsMax == -1
+        m.system.nbUtilisationsMax - m.system.nbUtilisationsActuel > 0 ||
+        m.system.nbUtilisationsMax == -1
     );
   }
 
@@ -112,7 +112,7 @@ export class ManoeuvreMonstre extends LitElement {
   }
 
   renderManoeuvre(manoeuvre) {
-    const manoeuvreData = manoeuvre.data;
+    const manoeuvreData = manoeuvre.system;
     return html`
       <ty-popover content=${manoeuvreData.description}>
         <section class="card-manoeuvre">

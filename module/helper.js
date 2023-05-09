@@ -7,9 +7,9 @@ export const getReactions = (baseData) =>
 export const getItems = (baseData, itemType) =>
   baseData.items.filter((item) => item.type === itemType);
 export const getActiveActions = (baseData) =>
-  getActions(baseData).filter((item) => item.data.actif);
+  getActions(baseData).filter((item) => item.system.actif);
 export const getActiveReactions = (baseData) =>
-  getReactions(baseData).filter((item) => item.data.actif);
+  getReactions(baseData).filter((item) => item.system.actif);
 
 export function encodeToLitObject(data) {
   return encodeURIComponent(JSON.stringify(data));

@@ -1,23 +1,8 @@
 <h2>Capacité raciale : {{ raceName }}</h2>
 {{{ race.data.description }}}
 <ty-capacite-raciale race="{{ race }}"></ty-capacite-raciale>
-<pouvoir-list 
-    actorId="{{ actor.data._id }}" 
-    title="Pouvoirs" 
-    type="pouvoir"
-    pouvoirs="{{pouvoirs}}"></pouvoir-list>
-<arme-list actorId="{{ actor.data._id }}" armes="{{armes}}"></arme-list>
-<armure-list
-    actorId="{{ actor.data._id }}"
-    armures="{{armures}}"
-></armure-list>
-<ty-familier-list
-    actorId="{{ actor.data._id }}"
-    familiers="{{familiers}}"
-></ty-familier-list>
-<pouvoir-list
-    actorId="{{ actor.data._id }}"
-    title="Equipements" 
-    type="equipement"
-    pouvoirs="{{equipements}}"
-></pouvoir-list>
+<pouvoir-list actorId="{{ actor._id }}" title="Pouvoirs" type="pouvoir" pouvoirs="{{pouvoirs}}"></pouvoir-list>
+<arme-list actorId="{{ actor._id }}" armes="{{armes}}"></arme-list>
+<armure-list actorId="{{ actor._id }}" armures="{{armures}}"></armure-list>
+<ty-familier-list actorId="{{ actor._id }}" familiers="{{familiers}}"></ty-familier-list>
+<pouvoir-list actorId="{{ actor._id }}" title="Equipements" type="equipement" pouvoirs="{{equipements}}"></pouvoir-list>

@@ -2,74 +2,41 @@
     <label>
         Nom
     </label>
-    <input
-        class="charname"
-        name="name"
-        type="text"
-        value="{{actor.name}}"
-        placeholder="Name"
-    />
+    <input class="charname" name="name" type="text" value="{{actor.name}}" placeholder="Name" />
 </h3>
 <h3 class="heros-headers">
-    <label for="race" >
+    <label for="race">
         Race
     </label>
     <span>
-        <input
-            name="data.race"
-            type="text"
-            value="{{raceName}}"
-            placeholder="Name"
-            readonly="true"
-        />
+        <input name="data.race" type="text" value="{{raceName}}" placeholder="Name" readonly="true" />
     </span>
     <label for="Origine">
         Origine
     </label>
-    <input
-        name="data.origine"
-        type="text"
-        value="{{data.data.origine}}"
-    />
+    <input name="data.origine" type="text" value="{{data.system.origine}}" />
     <label>
         Dieu tutélaire
     </label>
     <select name="data.dieu">
-        {{selectOptions optionsDieux selected=data.data.dieu localize=false}}
+        {{selectOptions optionsDieux selected=data.system.dieu localize=false}}
     </select>
 </h3>
 <h3 class="heros-headers">
     <label>
         Destinée
     </label>
-    <input
-        type="number"
-        name="data.destinee.current"
-        value="{{data.data.destinee.current}}"
-    />
+    <input type="number" name="data.destinee.current" value="{{data.system.destinee.current}}" />
     <label>
         Renommée
     </label>
-    <input
-        type="number"
-        name="data.renommee.current"
-        value="{{data.data.renommee.current}}"
-    />
+    <input type="number" name="data.renommee.current" value="{{data.system.renommee.current}}" />
     <label>
         Expérience
     </label>
-    <input
-        type="number"
-        name="data.experience"
-        value="{{data.data.experience}}"
-    />
+    <input type="number" name="data.experience" value="{{data.system.experience}}" />
     <label>
         Drachmes
     </label>
-    <input
-        type="number"
-        name="data.drachmes"
-        value="{{data.data.drachmes}}"
-    />
+    <input type="number" name="data.drachmes" value="{{data.system.drachmes}}" />
 </h3>
-            

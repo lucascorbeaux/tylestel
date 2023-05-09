@@ -4,8 +4,8 @@ export default class ActorTylestel extends Actor {
   prepareData() {
     super.prepareData();
 
-    const actorData = this.data;
-    const data = actorData.data;
+    const actorData = this;
+    const data = actorData.system;
 
     if (actorData.type === "heros") {
       data.vie = this.prepareVieData(data);
@@ -34,7 +34,7 @@ export default class ActorTylestel extends Actor {
   /** @inheritdoc */
   async _preCreate(data, options, user) {
     await super._preCreate(data, options, user);
-    this.data.token.update({ vision: true, actorLink: true, disposition: 1 });
+    this.prototypeToken.updateSource({ sight: { enabled: true }, actorLink: true, disposition: 1 });
   }
 
   validateMinMaxData(value, min, max) {
@@ -64,17 +64,17 @@ export default class ActorTylestel extends Actor {
   }
 
   calculValeurArmure() {
-    return getItems(this.data, "armure")
-      .filter((a) => a.data.data.equipe)
-      .map((a) => a.data.data.resistance)
+    return getItems(this, "armure")
+      .filter((a) => a.system.equipe)
+      .map((a) => a.system.resistance)
       .reduce((prev, curr) => Math.max(prev, curr), 0);
   }
 
   calculModificateurInitiative() {
     return (
-      getItems(this.data, "arme")
-        .filter((a) => a.data.data.equipe)
-        .map((a) => a.data.data.initiative)
+      getItems(this, "arme")
+        .filter((a) => a.system.equipe)
+        .map((a) => a.system.initiative)
         .reduce((prev, curr) => {
           if (!prev) {
             return curr;

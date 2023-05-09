@@ -3,22 +3,13 @@
 <div class="cols">
     {{> 'systems/tylestel/templates/part/heros-divinites.html' }}
     <div class="cols-tight">
-        <compteur-vie
-            max="{{ data.data.vie.max }}"
-            current="{{ data.data.vie.current }}"
-        ></compteur-vie>
+        <compteur-vie max="{{ data.system.vie.max }}" current="{{ data.system.vie.current }}"></compteur-vie>
         <ul class="etats">
-            {{#each data.data.etats as |etat id|}}
+            {{#each data.system.etats as |etat id|}}
             <li class="etat">
                 <label>
                     {{ etat.label }}
-                    <input
-                        type="checkbox"
-                        name="data.etats.{{id}}.actif"
-                        {{checked
-                        etat.actif
-                        }}
-                    />
+                    <input type="checkbox" name="system.etats.{{id}}.actif" {{checked etat.actif }} />
                 </label>
                 <span class="subtitle">- {{ etat.malus }} aux tests</span>
             </li>

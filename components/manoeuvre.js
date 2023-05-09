@@ -1,6 +1,6 @@
 import { LitElement, css, html } from "https://unpkg.com/lit?module";
-import { buttonCss, titreCss, icons } from "./cssCommun.js";
 import { executeManoeuvres } from "../services/dice.js";
+import { buttonCss, icons, titreCss } from "./cssCommun.js";
 
 export class Manoeuvre extends LitElement {
   static properties = {
@@ -81,7 +81,7 @@ export class Manoeuvre extends LitElement {
   get visibleData() {
     return this.modeSelection
       ? this.data
-      : this.data.filter((d) => d.data.actif);
+      : this.data.filter((d) => d.system.actif);
   }
 
   get usingManoeuvre() {
@@ -91,8 +91,8 @@ export class Manoeuvre extends LitElement {
   get usingManoeuvreNonEpuise() {
     return this.usingManoeuvre.filter(
       (m) =>
-        m.data.nbUtilisationsMax - m.data.nbUtilisationsActuel > 0 ||
-        m.data.nbUtilisationsMax == -1
+        m.system.nbUtilisationsMax - m.system.nbUtilisationsActuel > 0 ||
+        m.system.nbUtilisationsMax == -1
     );
   }
 
@@ -126,7 +126,7 @@ export class Manoeuvre extends LitElement {
   }
 
   renderManoeuvre(manoeuvre) {
-    const manoeuvreData = manoeuvre.data;
+    const manoeuvreData = manoeuvre.system;
     return html`
       <ty-popover content=${manoeuvreData.description}>
         <section class="card-manoeuvre">
@@ -219,7 +219,7 @@ export class Manoeuvre extends LitElement {
   toogleActif(event) {
     const id = event.target.value;
     const manoeuvre = this.data.find((d) => d._id === id);
-    manoeuvre.data.actif = !manoeuvre.data.actif;
+    manoeuvre.system.actif = !manoeuvre.system.actif;
   }
 
   async actionLaunch() {
@@ -270,7 +270,7 @@ export class Manoeuvre extends LitElement {
     const actor = game.actors.get(this.actorId);
 
     const manoeuvreActive = this.data.filter(
-      (m) => m.data.actif && m.data.nbUtilisationsMax > 0
+      (m) => m.system.actif && m.system.nbUtilisationsMax > 0
     );
 
     if (manoeuvreActive.length > this.nbCartes) {
@@ -280,7 +280,7 @@ export class Manoeuvre extends LitElement {
 
     this.data.forEach((manoeuvre) => {
       const item = actor.items.get(manoeuvre._id);
-      item.update({ data: { actif: manoeuvre.data.actif } });
+      item.update({ data: { actif: manoeuvre.system.actif } });
     });
   }
 }

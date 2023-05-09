@@ -5,7 +5,7 @@ export default class ItemTylestel extends Item {
   }
 
   getChatData(htmlOptions) {
-    const data = duplicate(this.data.data);
+    const data = duplicate(this.system);
 
     // Rich text description
     data.metadatahtml = "";
