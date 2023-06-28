@@ -29,7 +29,7 @@
       "label": "Tylestel - Actions",
       "path": "pack/actions.db",
       "module": "tylestel",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "reactions",
@@ -37,7 +37,7 @@
       "label": "Tylestel - Reactions",
       "path": "pack/reactions.db",
       "module": "tylestel",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "races",
@@ -45,7 +45,7 @@
       "label": "Tylestel - Les races",
       "path": "pack/races.db",
       "module": "tylestel",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "armes",
@@ -53,7 +53,7 @@
       "label": "Tylestel - Armes et Armures",
       "path": "pack/armes.db",
       "module": "tylestel",
-      "entity": "Item"
+      "type": "Item"
     },
     {
       "name": "macros",
@@ -61,7 +61,7 @@
       "label": "Tylestel - Macros",
       "path": "pack/macros.db",
       "module": "tylestel",
-      "entity": "Macro"
+      "type": "Macro"
     }
   ]
 }
